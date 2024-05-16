@@ -1,0 +1,35 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.selected {
+  background: blue
+}
+
+.time {
+  font-weight: bold;
+  color: #80276C;
+  font-size: 36pt;
+}
+
+.red, .mattapan {
+  color: #DA291C;
+}
+
+.orange {
+  color: #ED8B00;
+}
+
+.blue {
+  color: #003DA5;
+}
+
+.green-b,
+.green-c,
+.green-d,
+.green-e {
+  color: #00843D;
+}
