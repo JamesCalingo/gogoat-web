@@ -6,7 +6,7 @@ import { manifest } from "./manifest.json"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), VitePWA({
-    registerType: "autoUpdate",
+    injectRegister: "auto",
     manifest: manifest
   })],
 })
