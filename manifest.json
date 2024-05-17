@@ -1,6 +1,6 @@
 {
   "registerType": "prompt",
-  "includeAssests": ["favicon.ico", "apple-touc-icon.png", "masked-icon.svg"],
+  "includeAssests": ["favicon.ico", "apple-touch-icon.png", "favicon/android-chrome-192x192.png", "favicon/android-chrome-384x384.png"],
   "manifest": {
     "name": "GogoaT",
     "short_name": "GogoaT",
@@ -13,7 +13,7 @@
         "purpose": "favicon"
       },
       {
-        "src": "favicon//android-chrome-384x384.png",
+        "src": "favicon/android-chrome-384x384.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "favicon"

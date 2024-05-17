@@ -6,7 +6,9 @@
 }
 
 .selected {
-  background: blue
+  background: rgb(14, 99, 170);
+ border-width: 2px;
+ border-color: white;
 }
 
 .time {

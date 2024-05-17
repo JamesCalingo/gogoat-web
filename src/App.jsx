@@ -156,7 +156,7 @@ function App() {
             className={mode === "commuter" ? "selected" : null}
             onClick={() => swapMode("commuter")}
           >
-            Commuter Rail
+            Commuter
           </button>
           {system.length ? (
             <>
@@ -206,7 +206,7 @@ function App() {
               ).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
             </span>
           </h2>
-          <button onClick={() => reset()}>Reset</button>
+          <button onClick={() => reset()}>Find another train</button>
         </div>
       )}
     </>
