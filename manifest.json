@@ -1,4 +1,4 @@
-export const manifest = {
+{
   "registerType": "prompt",
   "includeAssests": ["favicon.ico", "apple-touch-icon.png", "favicon/android-chrome-192x192.png", "favicon/android-chrome-384x384.png"],
   "manifest": {
