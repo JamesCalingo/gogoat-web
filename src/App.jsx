@@ -113,7 +113,14 @@ function App() {
         `https://api-v3.mbta.com/predictions?sort=departure_time&page[limit]=5&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`
       ).then((res) => {
         res.json().then((data) => {
-          setPrediction(data.data[0]);
+          console.log(data);
+          if (data.length) {
+            setPrediction(data.data[0]);
+          } else {
+            setPrediction({
+              attributes: { error: "No prediction found." },
+            });
+          }
         });
       });
     } else {
@@ -122,7 +129,13 @@ function App() {
         `https://api-v3.mbta.com/schedules?sort=departure_time&page[limit]=1&filter[min_time]=${currentTime}&filter[stop]=${station.id}&filter[direction_id]=${direction}`
       ).then((res) => {
         res.json().then((data) => {
-          setPrediction(data.data[0]);
+          if (data.length) {
+            setPrediction(data.data[0]);
+          } else {
+            setPrediction({
+              attributes: { error: "No prediction found." },
+            });
+          }
         });
       });
     }
@@ -181,31 +194,40 @@ function App() {
         </div>
       ) : (
         <div>
-          <h2>{station.name}</h2>
-          <h3>
-            {direction
-              ? station.destination_1
-                ? station.destination_1
-                : "Inbound"
-              : station.destination_0
-              ? station.destination_0
-              : "Outbound"}
-          </h3>
-          <h2 id="prediction">
-            Your train should be around
-            <br />
-            <span
-              className={
-                station.line ? `${station.line.toLowerCase()} time` : "time"
-              }
-            >
-              {new Date(
-                prediction.attributes.arrival_time
-                  ? prediction.attributes.arrival_time
-                  : prediction.attributes.departure_time
-              ).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
-            </span>
-          </h2>
+          {prediction.attributes.error ? (
+            <h2>{prediction.attributes.error}</h2>
+          ) : (
+            <div>
+              <h2>{station.name}</h2>
+              <h3>
+                {direction
+                  ? station.destination_1
+                    ? station.destination_1
+                    : "Inbound"
+                  : station.destination_0
+                  ? station.destination_0
+                  : "Outbound"}
+              </h3>
+              <h2 id="prediction">
+                Your train should be around
+                <br />
+                <span
+                  className={
+                    station.line ? `${station.line.toLowerCase()} time` : "time"
+                  }
+                >
+                  {new Date(
+                    prediction.attributes.arrival_time
+                      ? prediction.attributes.arrival_time
+                      : prediction.attributes.departure_time
+                  ).toLocaleTimeString([], {
+                    hour: "numeric",
+                    minute: "2-digit",
+                  })}
+                </span>
+              </h2>
+            </div>
+          )}
           <button onClick={() => reset()}>Find another train</button>
         </div>
       )}
