@@ -114,8 +114,9 @@ function App() {
       ).then((res) => {
         res.json().then((data) => {
           console.log(data);
-          if (data.length) {
+          if (data.data.length) {
             setPrediction(data.data[0]);
+            console.log(prediction)
           } else {
             setPrediction({
               attributes: { error: "No prediction found." },
@@ -129,7 +130,7 @@ function App() {
         `https://api-v3.mbta.com/schedules?sort=departure_time&page[limit]=1&filter[min_time]=${currentTime}&filter[stop]=${station.id}&filter[direction_id]=${direction}`
       ).then((res) => {
         res.json().then((data) => {
-          if (data.length) {
+          if (data.data.length) {
             setPrediction(data.data[0]);
           } else {
             setPrediction({

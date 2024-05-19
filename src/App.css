@@ -13,11 +13,11 @@
 
 .time {
   font-weight: bold;
-  color: #80276C;
+  /* color: #80276C; */
   font-size: 36pt;
 }
 
-.red, .mattapan {
+/* .red, .mattapan {
   color: #DA291C;
 }
 
@@ -34,4 +34,4 @@
 .green-d,
 .green-e {
   color: #00843D;
-}
+} */
