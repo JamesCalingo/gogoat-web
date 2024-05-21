@@ -5,6 +5,6 @@ import { options } from "./manifest.json"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  // base: "./",
   plugins: [react(), VitePWA(options)]
 })
