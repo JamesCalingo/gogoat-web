@@ -1,6 +1,7 @@
 {
+
   "name": "gogoat",
-  "homepage": "go-gogoat.net",
+  "homepage": "https://jamescalingo.dev/gogoat-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
