@@ -33,9 +33,9 @@
         },
         {
           "src": "/maskable_icon.png",
-          " sizes": "225x225",
+          "sizes": "225x225",
           "type": "image/png",
-          " purpose": "any maskable"
+          "purpose": "any maskable"
         }
       ],
       "theme_color": "#171717",
