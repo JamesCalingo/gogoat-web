@@ -48,23 +48,31 @@ function App() {
 
   function renderStations(stations) {
     return (
-      <select
-        defaultValue={"Select a station"}
-        onChange={(event) =>
-          setStation(
-            system.find((station) => station.name === event.target.value)
-          )
-        }
+      <form
+      onChange={(event) => console.log(event.target.value)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log(event.target, station)
+
+          // setStation(
+          //   system.find((station) => station.name === event.target.value)
+          // );
+        }}
       >
-        <option disabled>Select a station</option>
-        {stations.map((station, index) => {
-          return (
-            <option key={index} value={station.name}>
-              {station.name ? station.name : station}
-            </option>
-          );
-        })}
-      </select>
+        <input list="stations" />
+
+        <datalist id="stations">
+          {/* <option disabled>Select a station</option> */}
+          {stations.map((station, index) => {
+            return (
+              <option key={index} value={station.name}>
+                {station.name ? station.name : station}
+              </option>
+            );
+          })}
+        </datalist>
+        <input hidden type="submit" />
+      </form>
     );
   }
 
@@ -116,7 +124,7 @@ function App() {
           console.log(data);
           if (data.data.length) {
             setPrediction(data.data[0]);
-            console.log(prediction)
+            console.log(prediction);
           } else {
             setPrediction({
               attributes: { error: "No prediction found." },
