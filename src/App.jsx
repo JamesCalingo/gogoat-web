@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import stations from "../stations.json";
 // import Subway from "./Subway";
 import "./App.css";
@@ -8,6 +8,7 @@ function App() {
   const [system, setSystem] = useState([]);
   const [station, setStation] = useState({});
   const [direction, setDirection] = useState("");
+  const [line, setLine] = useState("")
   const [goVisible, setGoVisible] = useState(false);
   const [prediction, setPrediction] = useState({});
 
@@ -28,22 +29,36 @@ function App() {
     "Stoughton",
   ];
 
-  useEffect(() => {
-    setSystem(
-      stations
-        .filter((station) => station.type === mode)
-        .sort((a, b) => {
-          if (a.name < b.name) return -1;
-          return 1;
-        })
-    );
-    system;
-  }, [mode]);
-
   function swapMode(newMode) {
     setMode(newMode);
     setStation({});
     setDirection("");
+    setSystem(
+      stations[newMode].sort((a, b) => {
+        if (a.name < b.name) return -1;
+        return 1;
+      })
+    );
+  }
+
+  function renderModes() {
+    return (
+      <>
+        <p>First, what mode are you taking?</p>
+        <button
+          className={mode === "subway" ? "selected" : null}
+          onClick={() => swapMode("subway")}
+        >
+          Subway
+        </button>
+        <button
+          className={mode === "commuter" ? "selected" : null}
+          onClick={() => swapMode("commuter")}
+        >
+          Commuter
+        </button>
+      </>
+    );
   }
 
   function renderStations(stations) {
@@ -70,9 +85,18 @@ function App() {
 
   function renderDirections() {
     let destinations = [];
-    if (station.type === "commuter") {
+    console.log(station)
+    if (mode === "commuter") {
       if (inboundTerminals.includes(station.name)) {
-        destinations.push("Outbound", "");
+        console.log(station)
+        switch(station.name) {
+          case "South Station":
+            console.log("THIS IS SOUTH")
+            return renderDestinations("south")  
+          case "North Station":
+            console.log("THIS IS NORTH")
+            return renderDestinations("north")
+        }
       } else if (outboundTerminals.includes(station.name)) {
         destinations.push("", "Inbound");
       } else {
@@ -106,40 +130,81 @@ function App() {
     );
   }
 
+  function renderDestinations(origin) {
+    const destinations = {
+      north: [
+        { id: "CR-Newburyport", line: "Newburyport/Rockport" },
+        { id: "CR-Haverhill", line: "Haverhill" },
+        { id: "CR-Lowell", line: "Lowell" },
+        { id: "CR-Fitchburg", line: "Fitchburg" },
+      ],
+      south: [
+        { id: "CR-Worcester", line: "Worcester" },
+        { id: "CR-Needham", line: "Needham" },
+        { id: "CR-Franklin", line: "Franklin/Foxboro" },
+        { id: "CR-Providence", line: "Providence/Stoughton" },
+        { id: "CR-Middleborough", line: "Middleboro/Lakeville" },
+        { id: "CR-Kingston", line: "Kingston" },
+        { id: "CR-Greenbush", line: "Greenbush" },
+        { id: "CR-Fairmount", line: "Fairmount" },
+      ],
+      bby: [
+        { id: "CR-Worcester", line: "Worcester" },
+        { id: "CR-Needham", line: "Needham" },
+        { id: "CR-Franklin", line: "Franklin/Foxboro" },
+        { id: "CR-Providence", line: "Providence/Stoughton" },
+      ]
+    };
+
+    return (
+      <select
+        defaultValue={"Select direction"}
+        onChange={(event) => {
+          setLine(event.target.value);
+          setGoVisible(true);
+        }}
+      >
+        <option disabled>Select direction</option>
+        {destinations[origin].map((destination, index) => {
+          return (
+            <option
+              key={index}
+              value={destination.id}
+            >
+              {destination.line}
+            </option>
+          );
+        })}
+      </select>
+    )
+  }
+
   function handleGo() {
     console.log(station.id, direction);
+    let url = "";
     if (station.type === "subway") {
-      fetch(
-        `https://api-v3.mbta.com/predictions?sort=departure_time&page[limit]=5&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`
-      ).then((res) => {
-        res.json().then((data) => {
-          console.log(data);
-          if (data.data.length) {
-            setPrediction(data.data[0]);
-            console.log(prediction)
-          } else {
-            setPrediction({
-              attributes: { error: "No prediction found." },
-            });
-          }
-        });
-      });
+      url = `https://api-v3.mbta.com/predictions?sort=departure_time&page[limit]=5&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`;
     } else {
+      // Due to "issues" with the prediction API for commuter rail trains, I use the schedule API
       let currentTime = new Date().toTimeString().split(" ")[0].slice(0, 5);
-      fetch(
-        `https://api-v3.mbta.com/schedules?sort=departure_time&page[limit]=1&filter[min_time]=${currentTime}&filter[stop]=${station.id}&filter[direction_id]=${direction}`
-      ).then((res) => {
-        res.json().then((data) => {
-          if (data.data.length) {
-            setPrediction(data.data[0]);
-          } else {
-            setPrediction({
-              attributes: { error: "No prediction found." },
-            });
-          }
-        });
-      });
+      url = `https://api-v3.mbta.com/schedules?sort=departure_time&page[limit]=1&filter[min_time]=${currentTime}&filter[stop]=${station.id}&filter[direction_id]=${direction}`;
+      if (line) {
+        url += `&filter[route]=${line}`
+      }
     }
+    fetch(url).then((res) => {
+      res.json().then((data) => {
+        console.log(data);
+        if (data.data.length) {
+          setPrediction(data.data[0]);
+          console.log(prediction);
+        } else {
+          setPrediction({
+            attributes: { error: "No prediction found." },
+          });
+        }
+      });
+    });
   }
 
   function reset() {
@@ -159,19 +224,7 @@ function App() {
       </div>
       {!Object.keys(prediction).length ? (
         <div>
-          <p>First, what mode are you taking?</p>
-          <button
-            className={mode === "subway" ? "selected" : null}
-            onClick={() => swapMode("subway")}
-          >
-            Subway
-          </button>
-          <button
-            className={mode === "commuter" ? "selected" : null}
-            onClick={() => swapMode("commuter")}
-          >
-            Commuter
-          </button>
+          {renderModes()}
           {system.length ? (
             <>
               <p>Next, what station are you travelling from?</p>
@@ -180,10 +233,7 @@ function App() {
           ) : null}
           {Object.keys(station).length ? (
             <>
-              <p>
-                Which {mode === "subway" ? "station" : "direction"} are you
-                heading towards?
-              </p>
+              <p>Where are you heading towards?</p>
               {renderDirections(station)}
             </>
           ) : null}
@@ -201,7 +251,7 @@ function App() {
             <div>
               <h2>{station.name}</h2>
               <h3>
-                {direction
+                {direction != 0
                   ? station.destination_1
                     ? station.destination_1
                     : "Inbound"
