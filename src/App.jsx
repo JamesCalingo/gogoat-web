@@ -8,7 +8,7 @@ function App() {
   const [system, setSystem] = useState([]);
   const [station, setStation] = useState({});
   const [direction, setDirection] = useState("");
-  const [line, setLine] = useState("")
+  const [line, setLine] = useState("");
   const [goVisible, setGoVisible] = useState(false);
   const [prediction, setPrediction] = useState({});
 
@@ -33,12 +33,29 @@ function App() {
     setMode(newMode);
     setStation({});
     setDirection("");
-    setSystem(
-      stations[newMode].sort((a, b) => {
-        if (a.name < b.name) return -1;
-        return 1;
-      })
-    );
+       if(newMode === "commuter") {
+      setSystem([
+        {
+          "name": "South Station",
+          "id": "place-south"
+        },
+        {
+          "name": "North Station",
+          "id": "place-north"
+        },
+        ...stations[newMode].sort((a, b) => {
+          if (a.name < b.name) return -1;
+          return 1;
+        }),
+      ])
+    } else {
+      setSystem(
+        stations[newMode].sort((a, b) => {
+          if (a.name < b.name) return -1;
+          return 1;
+        }),
+      );
+    }
   }
 
   function renderModes() {
@@ -85,17 +102,18 @@ function App() {
 
   function renderDirections() {
     let destinations = [];
-    console.log(station)
     if (mode === "commuter") {
-      if (inboundTerminals.includes(station.name)) {
-        console.log(station)
-        switch(station.name) {
+      if (
+        inboundTerminals.includes(station.name) ||
+        station.name === "Back Bay"
+      ) {
+        switch (station.name) {
           case "South Station":
-            console.log("THIS IS SOUTH")
-            return renderDestinations("south")  
+            return renderDestinations("south");
           case "North Station":
-            console.log("THIS IS NORTH")
-            return renderDestinations("north")
+            return renderDestinations("north");
+          case "Back Bay":
+            return renderDestinations("backbay");
         }
       } else if (outboundTerminals.includes(station.name)) {
         destinations.push("", "Inbound");
@@ -148,12 +166,12 @@ function App() {
         { id: "CR-Greenbush", line: "Greenbush" },
         { id: "CR-Fairmount", line: "Fairmount" },
       ],
-      bby: [
+      backbay: [
         { id: "CR-Worcester", line: "Worcester" },
         { id: "CR-Needham", line: "Needham" },
         { id: "CR-Franklin", line: "Franklin/Foxboro" },
         { id: "CR-Providence", line: "Providence/Stoughton" },
-      ]
+      ],
     };
 
     return (
@@ -167,20 +185,16 @@ function App() {
         <option disabled>Select direction</option>
         {destinations[origin].map((destination, index) => {
           return (
-            <option
-              key={index}
-              value={destination.id}
-            >
+            <option key={index} value={destination.id}>
               {destination.line}
             </option>
           );
         })}
       </select>
-    )
+    );
   }
 
   function handleGo() {
-    console.log(station.id, direction);
     let url = "";
     if (station.type === "subway") {
       url = `https://api-v3.mbta.com/predictions?sort=departure_time&page[limit]=5&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`;
@@ -189,7 +203,7 @@ function App() {
       let currentTime = new Date().toTimeString().split(" ")[0].slice(0, 5);
       url = `https://api-v3.mbta.com/schedules?sort=departure_time&page[limit]=1&filter[min_time]=${currentTime}&filter[stop]=${station.id}&filter[direction_id]=${direction}`;
       if (line) {
-        url += `&filter[route]=${line}`
+        url += `&filter[route]=${line}`;
       }
     }
     fetch(url).then((res) => {

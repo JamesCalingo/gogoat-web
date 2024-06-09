@@ -1088,10 +1088,6 @@
   ],
   "commuter": [
     {
-      "name": "South Station",
-      "id": "place-south"
-    },
-    {
       "name": "Back Bay",
       "id": "place-bbsta"
     },
@@ -1414,10 +1410,6 @@
     {
       "name": "Middleborough/Lakeville",
       "id": "place-MM-0356"
-    },
-    {
-      "name": "North Station",
-      "id": "place-north"
     },
     {
       "name": "Chelsea",
