@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import stations from "../stations.json";
-import { formatTime, generateURL, predict } from "./utils";
+import { displayDirection, formatTime, generateURL, predict } from "./utils";
 import { Sentry } from "react-activity";
 import "react-activity/dist/Sentry.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-const MySwal = withReactContent(Swal);
+const mySwal = withReactContent(Swal);
 
 function Predictor() {
   const [mode, setMode] = useState("");
@@ -220,13 +220,8 @@ function Predictor() {
     let url = generateURL(station, direction, line);
     setSaved({
       origin: station.name,
-      destination: direction != 0
-        ? station.destination_1
-          ? station.destination_1
-          : "Inbound"
-        : station.destination_0
-        ? station.destination_0
-        : "Outbound",
+      destination: displayDirection(station, direction),
+
       url: url,
     });
     predict(url)
@@ -255,8 +250,9 @@ function Predictor() {
 
   function handleClickSave() {
     setSave(true);
-    MySwal.fire({
+    mySwal.fire({
       title: "Saved!",
+      text: "Reload the page to see this prediction on the main screen. Note that you can only have one prediction saved at a time."
     }).then(reset());
   }
 
@@ -293,15 +289,8 @@ function Predictor() {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading{" "}
-              {direction != 0
-                ? station.destination_1
-                  ? station.destination_1
-                  : "inbound"
-                : station.destination_0
-                ? station.destination_0
-                : "outbound"}{" "}
-              should be around
+              It looks like the next train from {station.name} heading
+              {displayDirection(station, direction)} should be around
               <br />
               <span className="time">
                 {formatTime(

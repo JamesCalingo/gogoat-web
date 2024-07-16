@@ -1,20 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { predict, formatTime } from "./utils";
-import { Sentry } from "react-activity";
-import "react-activity/dist/Sentry.css";
 
-function Favorites() {
+function Favorites(props) {
   const [prediction, setPrediction] = useState({});
-  const [data, setData] = useState({});
+ const {data} = props
 
-  useEffect(() => {
-    const apicall = JSON.parse(localStorage.getItem("apicall"));
 
-    if (Object.keys(apicall).length) {
-      setData(apicall);
-    }
-    console.log(data);
-  }, []);
 
   useEffect(() => {
     if (Object.keys(data).length) {
@@ -33,7 +25,7 @@ function Favorites() {
     <>
       <h2>Previously saved trip:</h2>
 
-      {/* <div>{data ? prediction.relationships.stop.data.id : ""} {data ? prediction.attributes ? formatTime(prediction.attributes.departure_time): <Sentry /> : "" }</div> */}
+      <b>{data ? data.origin : ""} {data.destination}: {prediction ? prediction.attributes ? formatTime(prediction.attributes.departure_time): "N/A": "N/A" }</b>
     </>
   );
 }
