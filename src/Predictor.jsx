@@ -289,8 +289,7 @@ function Predictor() {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading
-              {displayDirection(station, direction)} should be around
+              It looks like the next train from {station.name} heading {displayDirection(station, direction)} should be around
               <br />
               <span className="time">
                 {formatTime(
@@ -303,7 +302,8 @@ function Predictor() {
           </div>
         )}
         <button onClick={() => reset()}>Find another train</button>
-        <button onClick={() => handleClickSave()}>Save to Favorites</button>
+        { station.line ?
+        <button onClick={() => handleClickSave()}>Save to Favorites</button> : <p>The ability to save commuter rail trips as favorites is currently unavailable</p>}
       </div>
     );
   }
