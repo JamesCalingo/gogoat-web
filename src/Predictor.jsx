@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import stations from "../stations.json";
-import { formatTime, predict } from "./utils";
+import { formatTime, generateURL, predict } from "./utils";
 import { Sentry } from "react-activity";
 import "react-activity/dist/Sentry.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 function Predictor() {
   const [mode, setMode] = useState("");
@@ -10,9 +14,20 @@ function Predictor() {
   const [station, setStation] = useState({});
   const [direction, setDirection] = useState("");
   const [line, setLine] = useState("");
-  const [goVisible, setGoVisible] = useState(false);
+  const [saved, setSaved] = useState({});
+  const [save, setSave] = useState(false);
   const [prediction, setPrediction] = useState({});
+
   const [isLoading, setIsLoading] = useState(false);
+  const [goVisible, setGoVisible] = useState(false);
+
+  useEffect(() => {
+    if (save) {
+      console.log(saved);
+      localStorage.setItem("apicall", JSON.stringify(saved));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [save]);
 
   const inboundTerminals = ["North Station", "South Station"];
   const outboundTerminals = [
@@ -63,7 +78,7 @@ function Predictor() {
   function renderModes() {
     return (
       <>
-      <h2>Find your train instantly!</h2>
+        <h2>Find your train instantly!</h2>
         <p>What mode are you taking?</p>
         <button
           className={mode === "subway" ? "selected" : null}
@@ -199,9 +214,22 @@ function Predictor() {
     );
   }
 
-  function handleGo() {
+  function handleClickGo() {
     setIsLoading(true);
-    predict(station, direction, line)
+    setSave(false);
+    let url = generateURL(station, direction, line);
+    setSaved({
+      origin: station.name,
+      destination: direction != 0
+        ? station.destination_1
+          ? station.destination_1
+          : "Inbound"
+        : station.destination_0
+        ? station.destination_0
+        : "Outbound",
+      url: url,
+    });
+    predict(url)
       .then((res) => {
         res.json().then((data) => {
           console.log(data);
@@ -225,6 +253,13 @@ function Predictor() {
       });
   }
 
+  function handleClickSave() {
+    setSave(true);
+    MySwal.fire({
+      title: "Saved!",
+    }).then(reset());
+  }
+
   function renderSelections() {
     return (
       <div>
@@ -242,7 +277,7 @@ function Predictor() {
           </>
         ) : null}
         <div className="buttondiv">
-          <button hidden={!goVisible} onClick={handleGo}>
+          <button hidden={!goVisible} onClick={handleClickGo}>
             Go GogoaT!
           </button>
         </div>
@@ -258,20 +293,17 @@ function Predictor() {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading {direction != 0
+              It looks like the next train from {station.name} heading{" "}
+              {direction != 0
                 ? station.destination_1
                   ? station.destination_1
                   : "inbound"
                 : station.destination_0
                 ? station.destination_0
-                : "outbound"} should be around
-          
+                : "outbound"}{" "}
+              should be around
               <br />
-              <span
-                className={
-                  station.line ? `${station.line.toLowerCase()} time` : "time"
-                }
-              >
+              <span className="time">
                 {formatTime(
                   prediction.attributes.arrival_time
                     ? prediction.attributes.arrival_time
@@ -282,8 +314,7 @@ function Predictor() {
           </div>
         )}
         <button onClick={() => reset()}>Find another train</button>
-        <button onClick={() => alert("COMING SOON")}>Save to Favorites</button>
-
+        <button onClick={() => handleClickSave()}>Save to Favorites</button>
       </div>
     );
   }
@@ -294,13 +325,12 @@ function Predictor() {
     setStation({});
     setLine("");
     setDirection("");
-    setGoVisible(false);
     setPrediction({});
+    setGoVisible(false);
   }
 
   return (
     <>
-
       {isLoading ? (
         <Sentry />
       ) : !Object.keys(prediction).length ? (

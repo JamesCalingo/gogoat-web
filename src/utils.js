@@ -1,4 +1,4 @@
-export function predict(station, direction, line) {
+export function generateURL(station, direction, line) {
     let url = "";
 
     if (station.type === "subway") {
@@ -11,12 +11,18 @@ export function predict(station, direction, line) {
             url += `&filter[route]=${line}`;
         }
     }
+    return url
+}
 
-    console.log(url);
+export function predict(url) {
+
     return fetch(url)
 }
 
 export function formatTime(timeString) {
+    if(!timeString) {
+        return "N/A"
+    }
     return new Date(timeString).toLocaleTimeString([], {
         hour: "numeric",
         minute: "2-digit",

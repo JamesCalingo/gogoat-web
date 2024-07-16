@@ -5,29 +5,35 @@ import "react-activity/dist/Sentry.css";
 
 function Favorites() {
   const [prediction, setPrediction] = useState({});
-  const station = {
-    name: "Newton Centre",
-    id: "place-newto",
-    line: "Green-D",
-  };
+  const [data, setData] = useState({});
 
   useEffect(() => {
-  predict(station, 1, "")
-    .then((res) => res.json())
-    .then((data) => {
-      setPrediction(data.data[0]);
-    });
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+    const apicall = JSON.parse(localStorage.getItem("apicall"));
 
+    if (Object.keys(apicall).length) {
+      setData(apicall);
+    }
+    console.log(data);
+  }, []);
 
+  useEffect(() => {
+    if (Object.keys(data).length) {
+      console.log(data.url);
+      predict(data.url)
+        .then((res) => res.json())
+        .then((data) => {
+          setPrediction(data.data[0]);
+          console.log(prediction);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
-console.log(prediction)
   return (
     <>
-      <p>Previous searches</p>
+      <h2>Previously saved trip:</h2>
 
-      <div>Newton Centre to Union Square: {prediction ? prediction.attributes ? formatTime(prediction.attributes.arrival_time): <Sentry /> : <Sentry /> }</div>
+      {/* <div>{data ? prediction.relationships.stop.data.id : ""} {data ? prediction.attributes ? formatTime(prediction.attributes.departure_time): <Sentry /> : "" }</div> */}
     </>
   );
 }
