@@ -5,6 +5,7 @@ import { Sentry } from "react-activity";
 import "react-activity/dist/Sentry.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { findNext } from "./utils";
 
 const mySwal = withReactContent(Swal);
 
@@ -229,7 +230,8 @@ function Predictor() {
         res.json().then((data) => {
           console.log(data);
           if (data.data.length) {
-            setPrediction(data.data[0]);
+            let next = findNext(data.data)
+            setPrediction(next);
           } else {
             setPrediction({
               attributes: { error: "No prediction found." },

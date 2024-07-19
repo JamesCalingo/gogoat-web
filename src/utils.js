@@ -19,6 +19,11 @@ export function predict(url) {
     return fetch(url)
 }
 
+// It's actually possible for the API to return a prediction with a time in the past. With this, we can filter out any such predictions.
+export function findNext(data) {
+    return data.find(item => new Date(item.attributes.departure_time) > new Date())
+}
+
 export function displayDirection(station, direction) {
     return direction != 0
         ? station.destination_1

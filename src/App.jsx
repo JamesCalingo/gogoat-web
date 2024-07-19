@@ -13,6 +13,7 @@ function App() {
       setSaved(apicall);
     }
     console.log(saved);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
