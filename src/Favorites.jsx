@@ -12,9 +12,17 @@ function Favorites(props) {
       predict(data.url)
         .then((res) => res.json())
         .then((data) => {
-          let next = findNext(data.data);
-          setPrediction(next);
-          console.log(prediction);
+          if (data.data.attributes) {
+            let next = findNext(data.data);
+            setPrediction(next);
+            console.log(prediction);
+          } else {
+            setPrediction({
+              attributes: {
+                error: "No data.",
+              },
+            });
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -27,6 +35,7 @@ function Favorites(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
+  console.log(prediction);
 
   return (
     <>
@@ -37,8 +46,8 @@ function Favorites(props) {
       <h2>
         {data ? data.origin : ""} {data.destination}:<br />
         <span className="time">
-          {prediction.attributes
-            ? prediction.attributes.arrival_time
+          {prediction
+            ? prediction.attributes && !prediction.attributes.error
               ? formatTime(
                   prediction.attributes.arrival_time
                     ? prediction.attributes.arrival_time

@@ -9,7 +9,9 @@ import { findNext } from "./utils";
 
 const mySwal = withReactContent(Swal);
 
-function Predictor() {
+function Predictor(props) {
+  const { prev } = props;
+
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
   const [station, setStation] = useState({});
@@ -25,7 +27,7 @@ function Predictor() {
   useEffect(() => {
     if (save) {
       console.log(saved);
-      localStorage.setItem("apicall", JSON.stringify(saved));
+      localStorage.setItem("saved", JSON.stringify(saved));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [save]);
@@ -167,7 +169,7 @@ function Predictor() {
       </select>
     );
   }
-
+// Function to render destinations for North, South, and Back Bay
   function renderDestinations(origin) {
     const destinations = {
       north: [
@@ -215,50 +217,8 @@ function Predictor() {
     );
   }
 
-  function handleClickGo() {
-    setIsLoading(true);
-    setSave(false);
-    let url = generateURL(station, direction, line);
-    setSaved({
-      origin: station.name,
-      destination: displayDirection(station, direction),
-
-      url: url,
-    });
-    predict(url)
-      .then((res) => {
-        res.json().then((data) => {
-          console.log(data);
-          if (data.data.length) {
-            let next = findNext(data.data)
-            setPrediction(next);
-          } else {
-            setPrediction({
-              attributes: { error: "No prediction found." },
-            });
-          }
-        });
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setPrediction({
-          attributes: {
-            error: "An error occurred when trying to get your data. Try again.",
-          },
-        });
-      });
-  }
-
-  function handleClickSave() {
-    setSave(true);
-    mySwal.fire({
-      title: "Saved!",
-      text: "Reload the page to see this prediction on the main screen. Note that you can only have one prediction saved at a time."
-    }).then(reset());
-  }
-
   function renderSelections() {
+
     return (
       <div>
         {renderModes()}
@@ -283,6 +243,64 @@ function Predictor() {
     );
   }
 
+
+  function handleClickGo() {
+    setIsLoading(true);
+    setSave(false);
+    let url = generateURL(station, direction, line);
+    setSaved({
+      origin: station.name,
+      destination: displayDirection(station, direction),
+
+      url: url,
+    });
+    predict(url)
+      .then((res) => {
+        res.json().then((data) => {
+          console.log(data);
+          if (data.data.length) {
+            let next = findNext(data.data);
+            setPrediction(next);
+          } else {
+            setPrediction({
+              attributes: { error: "No prediction found." },
+            });
+          }
+        });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setPrediction({
+          attributes: {
+            error: "An error occurred when trying to get your data. Try again.",
+          },
+        });
+      });
+  }
+
+  function handleClickSave() {
+    setSave(true);
+    if (prev) {
+      mySwal.fire({
+        title: "Overwrite previous trip?",
+        text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
+        showCancelButton: "true",
+      }).then(result => {
+        if(result.isConfirmed) {
+          window.location.reload()
+        }
+      });
+    } else {
+      mySwal
+        .fire({
+          title: "Saved!",
+          text: "Note that you can only have one prediction saved at a time.",
+        })
+        .then(() => window.location.reload());
+    }
+  }
+ 
   function renderPrediction() {
     return (
       <div>
@@ -291,7 +309,8 @@ function Predictor() {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading {displayDirection(station, direction)} should be around
+              It looks like the next train from {station.name} heading{" "}
+              {displayDirection(station, direction)} should be around
               <br />
               <span className="time">
                 {formatTime(
@@ -304,8 +323,14 @@ function Predictor() {
           </div>
         )}
         <button onClick={() => reset()}>Find another train</button>
-        { station.line ?
-        <button onClick={() => handleClickSave()}>Save to Favorites</button> : <p>The ability to save commuter rail trips as favorites is currently unavailable</p>}
+        {station.line ? (
+          <button onClick={() => handleClickSave()}>Save to Favorites</button>
+        ) : (
+          <p>
+            The ability to save commuter rail trips as favorites is currently
+            unavailable
+          </p>
+        )}
       </div>
     );
   }

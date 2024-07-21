@@ -4,16 +4,15 @@ import Favorites from "./Favorites";
 import Predictor from "./Predictor";
 
 function App() {
-  const [saved, setSaved] = useState({});
+  const [stored, setStored] = useState({});
 
   useEffect(() => {
-    const apicall = JSON.parse(localStorage.getItem("apicall"));
+    const storage = JSON.parse(localStorage.getItem("saved"));
 
-    if (apicall && Object.keys(apicall).length) {
-      setSaved(apicall);
+    if (storage && Object.keys(storage).length) {
+      setStored(storage);
     }
-    console.log(saved);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -22,8 +21,8 @@ function App() {
         <h1>GogoaT</h1>
       </div>
 
-      <Predictor />
-      {Object.keys(saved).length ? <Favorites data={saved} /> : null}
+      <Predictor prev={Object.keys(stored).length ? stored: null} />
+      {Object.keys(stored).length ? <Favorites data={stored} /> : null}
     </>
   );
 }
