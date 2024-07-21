@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import stations from "../stations.json";
 import { displayDirection, formatTime, generateURL, predict } from "./utils";
@@ -324,7 +325,7 @@ function Predictor(props) {
         )}
         <button onClick={() => reset()}>Find another train</button>
         {station.line ? (
-          <button onClick={() => handleClickSave()}>Save to Favorites</button>
+          <button onClick={() => handleClickSave()}>Save as Favorite</button>
         ) : (
           <p>
             The ability to save commuter rail trips as favorites is currently
