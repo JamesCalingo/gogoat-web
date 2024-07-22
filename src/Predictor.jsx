@@ -170,7 +170,7 @@ function Predictor(props) {
       </select>
     );
   }
-// Function to render destinations for North, South, and Back Bay
+  // Function to render destinations for North, South, and Back Bay
   function renderDestinations(origin) {
     const destinations = {
       north: [
@@ -219,7 +219,6 @@ function Predictor(props) {
   }
 
   function renderSelections() {
-
     return (
       <div>
         {renderModes()}
@@ -243,7 +242,6 @@ function Predictor(props) {
       </div>
     );
   }
-
 
   function handleClickGo() {
     setIsLoading(true);
@@ -283,25 +281,22 @@ function Predictor(props) {
   function handleClickSave() {
     setSave(true);
     if (prev) {
-      mySwal.fire({
-        title: "Overwrite previous trip?",
-        text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
-        showCancelButton: "true",
-      }).then(result => {
-        if(result.isConfirmed) {
-          window.location.reload()
-        }
-      });
-    } else {
       mySwal
         .fire({
-          title: "Saved!",
-          text: "Note that you can only have one prediction saved at a time.",
+          title: "Overwrite previous trip?",
+          text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
+          showCancelButton: "true",
         })
-        .then(() => window.location.reload());
+        .then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+    } else {
+      window.location.reload();
     }
   }
- 
+
   function renderPrediction() {
     return (
       <div>
