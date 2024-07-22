@@ -12,7 +12,7 @@ function Favorites(props) {
       predict(data.url)
         .then((res) => res.json())
         .then((data) => {
-          if (data.data.attributes) {
+          if (data.data.length) {
             let next = findNext(data.data);
             setPrediction(next);
             console.log(prediction);
@@ -47,7 +47,7 @@ function Favorites(props) {
         {data ? data.origin : ""} {data.destination}:<br />
         <span className="time">
           {prediction
-            ? prediction.attributes && !prediction.attributes.error
+            ? prediction.attributes
               ? formatTime(
                   prediction.attributes.arrival_time
                     ? prediction.attributes.arrival_time
