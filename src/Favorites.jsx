@@ -15,7 +15,6 @@ function Favorites(props) {
           if (data.data.length) {
             let next = findNext(data.data);
             setPrediction(next);
-            console.log(prediction);
           } else {
             setPrediction({
               attributes: {
@@ -35,7 +34,11 @@ function Favorites(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  console.log(prediction);
+
+  function handlePressClear() {
+    localStorage.clear()
+    window.location.reload()
+  }
 
   return (
     <>
@@ -57,6 +60,7 @@ function Favorites(props) {
             : "..."}
         </span>
       </h2>
+      <button onClick={handlePressClear}>Clear</button>
     </>
   );
 }
