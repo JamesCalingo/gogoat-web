@@ -11,7 +11,7 @@ import { findNext } from "./utils";
 const mySwal = withReactContent(Swal);
 
 function Predictor(props) {
-  const { prev } = props;
+  const { prev, onChange } = props;
 
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
@@ -246,6 +246,7 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
+    onChange()
     let url = generateURL(station, direction, line);
     setSaved({
       origin: station.name,
@@ -339,6 +340,7 @@ function Predictor(props) {
     setDirection("");
     setPrediction({});
     setGoVisible(false);
+    onChange()
   }
 
   return (

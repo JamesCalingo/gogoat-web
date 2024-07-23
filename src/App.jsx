@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Favorites from "./Favorites";
 import Predictor from "./Predictor";
+import DownloadButton from "./DownloadButton";
 
 function App() {
   const [stored, setStored] = useState({});
+  const [isBottomVisible, setIsBottomVisible] = useState(true);
 
   useEffect(() => {
     const storage = JSON.parse(localStorage.getItem("saved"));
@@ -21,8 +23,16 @@ function App() {
         <h1>GogoaT</h1>
       </div>
 
-      <Predictor prev={Object.keys(stored).length ? stored: null} />
-      {Object.keys(stored).length ? <Favorites data={stored} /> : null}
+      <Predictor prev={Object.keys(stored).length ? stored : null} onChange={() => setIsBottomVisible(!isBottomVisible)}/>
+      {isBottomVisible ? (
+        <>
+        {Object.keys(stored).length ? <Favorites data={stored} /> : null}
+        {
+   !window.matchMedia('(display-mode: standalone)').matches && 
+  <DownloadButton />
+  }
+        </>
+      ) : null}
     </>
   );
 }
