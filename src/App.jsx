@@ -23,14 +23,17 @@ function App() {
         <h1>GogoaT</h1>
       </div>
 
-      <Predictor prev={Object.keys(stored).length ? stored : null} onChange={() => setIsBottomVisible(!isBottomVisible)}/>
+      <Predictor
+        prev={Object.keys(stored).length ? stored : null}
+        onChange={() => setIsBottomVisible(!isBottomVisible)}
+      />
       {isBottomVisible ? (
         <>
-        {Object.keys(stored).length ? <Favorites data={stored} /> : null}
-        {
-   !window.matchMedia('(display-mode: standalone)').matches && 
-  <DownloadButton />
-  }
+          {Object.keys(stored).length ? <Favorites data={stored} /> : null}
+          <br />
+          {!window.matchMedia("(display-mode: standalone)").matches && (
+            <DownloadButton />
+          )}
         </>
       ) : null}
     </>

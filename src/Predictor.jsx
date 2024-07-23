@@ -248,6 +248,7 @@ function Predictor(props) {
     setSave(false);
     onChange()
     let url = generateURL(station, direction, line);
+    console.log(url)
     setSaved({
       origin: station.name,
       destination: displayDirection(station, direction),
