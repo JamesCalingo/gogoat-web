@@ -139,9 +139,9 @@ function Predictor(props) {
           //NOTE: There's an argument to be made that Back Bay should also have an "Inbound to Boston" option, but this movement seems rather uncommon...
         }
       } else if (outboundTerminals.includes(station.name)) {
-        destinations.push("", "Inbound");
+        destinations.push("", "Boston");
       } else {
-        destinations.push("Outbound", "Inbound");
+        destinations.push("Outbound", "Boston");
       }
     } else {
       destinations.push(station.destination_0, station.destination_1);
@@ -309,7 +309,7 @@ function Predictor(props) {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading{" "}
+              It looks like the next train from {station.name} heading{direction === "0" && mode === "commuter" ?" " : " to "}
               {displayDirection(station, direction)} should be around
               <br />
               <span className="time">

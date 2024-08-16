@@ -50,7 +50,7 @@ function Favorites(props) {
       </h2>
 
       <h2>
-        {data ? data.origin : ""} - {data.destination}:<br />
+        {data ? data.origin : ""} &#8594; {data.destination}:<br />
         <span className="time">
           {prediction
             ? prediction.attributes

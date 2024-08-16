@@ -28,7 +28,7 @@ export function displayDirection(station, direction) {
     return direction != 0
         ? station.destination_1
             ? station.destination_1
-            : "Inbound"
+            : "Boston"
         : station.destination_0
             ? station.destination_0
             : "Outbound"
