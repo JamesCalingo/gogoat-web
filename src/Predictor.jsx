@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import stations from "../stations.json";
-import { displayDirection, formatTime, generateURL, predict } from "./utils";
 import { Sentry } from "react-activity";
 import "react-activity/dist/Sentry.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { findNext } from "./utils";
+
+import stations from "../stations.json";
+import { displayDirection, formatTime, generateURL, predict, findNext } from "./utils";
 
 const mySwal = withReactContent(Swal);
 
@@ -253,7 +253,7 @@ function Predictor(props) {
       origin: station.name,
       mode: mode,
       line: station.line,
-      destination: displayDirection(station, direction),
+      destination: line && mode === "commuter" ? line.split("-")[1] : displayDirection(station, direction),
       id: station.id,
       direction: direction,
     });
