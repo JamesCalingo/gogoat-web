@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { predict, findNext, formatTime } from "./utils";
+import { predict, findNext, formatTime, generateURL } from "./utils";
 
 function Favorites(props) {
   const [prediction, setPrediction] = useState({});
@@ -8,8 +8,11 @@ function Favorites(props) {
 
   useEffect(() => {
     if (Object.keys(data).length) {
-      console.log(data.url);
-      predict(data.url)
+  
+  
+       let url = generateURL(data, data.direction, data)
+      console.log(url)
+      predict(url)
         .then((res) => res.json())
         .then((data) => {
           if (data.data.length) {

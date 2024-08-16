@@ -139,9 +139,9 @@ function Predictor(props) {
           //NOTE: There's an argument to be made that Back Bay should also have an "Inbound to Boston" option, but this movement seems rather uncommon...
         }
       } else if (outboundTerminals.includes(station.name)) {
-        destinations.push("", "Inbound to Boston");
+        destinations.push("", "Inbound");
       } else {
-        destinations.push("Outbound", "Inbound to Boston");
+        destinations.push("Outbound", "Inbound");
       }
     } else {
       destinations.push(station.destination_0, station.destination_1);
@@ -246,14 +246,16 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-    onChange()
+    onChange();
     let url = generateURL(station, direction, line);
-    console.log(url)
+    console.log(url);
     setSaved({
       origin: station.name,
+      mode: mode,
+      line: station.line,
       destination: displayDirection(station, direction),
-
-      url: url,
+      id: station.id,
+      direction: direction,
     });
     predict(url)
       .then((res) => {
@@ -321,14 +323,8 @@ function Predictor(props) {
           </div>
         )}
         <button onClick={() => reset()}>Find another train</button>
-        {station.line ? (
-          <button onClick={() => handleClickSave()}>Save as Favorite</button>
-        ) : (
-          <p>
-            The ability to save commuter rail trips as favorites is currently
-            unavailable
-          </p>
-        )}
+
+        <button onClick={() => handleClickSave()}>Save as Favorite</button>
       </div>
     );
   }
@@ -341,7 +337,7 @@ function Predictor(props) {
     setDirection("");
     setPrediction({});
     setGoVisible(false);
-    onChange()
+    onChange();
   }
 
   return (
