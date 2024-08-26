@@ -9,7 +9,6 @@ function Favorites(props) {
   useEffect(() => {
     if (Object.keys(data).length) {
   
-  
        let url = generateURL(data, data.direction, data)
       console.log(url)
       predict(url)
