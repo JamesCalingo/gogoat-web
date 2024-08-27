@@ -1,3 +1,6 @@
+import axios from "axios";
+
+
 export function generateURL(station, direction, line) {
     let url = ""
 
@@ -16,7 +19,7 @@ export function generateURL(station, direction, line) {
 }
 
 export function predict(url) {
-    return fetch(url)
+    return axios.get(url)
 }
 
 // It's actually possible for the API to return a prediction with a time in the past. With this, we can filter out any such predictions.

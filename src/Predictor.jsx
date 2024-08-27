@@ -259,17 +259,15 @@ function Predictor(props) {
     });
     predict(url)
       .then((res) => {
-        res.json().then((data) => {
-          console.log(data);
-          if (data.data.length) {
-            let next = findNext(data.data);
+          let data =res.data.data;
+          if (data.length) {
+            let next = findNext(data);
             setPrediction(next);
           } else {
             setPrediction({
               attributes: { error: "No prediction found." },
             });
           }
-        });
         setIsLoading(false);
       })
       .catch((err) => {
