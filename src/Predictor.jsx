@@ -6,12 +6,13 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 import stations from "../stations.json";
-import { displayDirection, formatTime, generateURL, predict, findNext } from "./utils";
+import { displayDirection, generateURL, predict, findNext, displayLineName } from "./utils";
+import Prediction from "./Prediction";
 
 const mySwal = withReactContent(Swal);
 
 function Predictor(props) {
-  const { prev, onChange } = props;
+  const { prev, onFormVisible, onReset} = props;
 
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
@@ -21,6 +22,7 @@ function Predictor(props) {
   const [saved, setSaved] = useState({});
   const [save, setSave] = useState(false);
   const [prediction, setPrediction] = useState({});
+  const [times, setTimes] =useState( [])
 
   const [isLoading, setIsLoading] = useState(false);
   const [goVisible, setGoVisible] = useState(false);
@@ -33,24 +35,8 @@ function Predictor(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [save]);
 
-  const inboundTerminals = ["North Station", "South Station"];
-  const outboundTerminals = [
-    "Middleborough/Lakeville",
-    "Kingston",
-    "Greenbush",
-    "Rockport",
-    "Newburyport",
-    "Haverhill",
-    "Lowell",
-    "Watchusett",
-    "Worcester",
-    "Needham Heights",
-    "Forge Park/495",
-    "Wickford Junction",
-    "Stoughton",
-  ];
-
   function swapMode(newMode) {
+    onFormVisible(false);
     setMode(newMode);
     setStation({});
     setDirection("");
@@ -125,6 +111,22 @@ function Predictor(props) {
   function renderDirections() {
     let destinations = [];
     if (mode === "commuter") {
+      const inboundTerminals = ["North Station", "South Station"];
+      const outboundTerminals = [
+        "Middleborough/Lakeville",
+        "Kingston",
+        "Greenbush",
+        "Rockport",
+        "Newburyport",
+        "Haverhill",
+        "Lowell",
+        "Watchusett",
+        "Worcester",
+        "Needham Heights",
+        "Forge Park/495",
+        "Wickford Junction",
+        "Stoughton",
+      ];
       if (
         inboundTerminals.includes(station.name) ||
         station.name === "Back Bay"
@@ -170,6 +172,7 @@ function Predictor(props) {
       </select>
     );
   }
+
   // Function to render destinations for North, South, and Back Bay
   function renderDestinations(origin) {
     const destinations = {
@@ -246,108 +249,96 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-    onChange();
+    
     let url = generateURL(station, direction, line);
     console.log(url);
     setSaved({
       origin: station.name,
       mode: mode,
       line: station.line,
-      destination: line && mode === "commuter" ? line.split("-")[1] : displayDirection(station, direction),
+      destination: line && mode === "commuter" ? displayLineName(line) : displayDirection(station, direction, line ? line : null),
       id: station.id,
       direction: direction,
     });
     predict(url)
       .then((res) => {
-        res.json().then((data) => {
-          console.log(data);
-          if (data.data.length) {
-            let next = findNext(data.data);
+          let data = res.data.data;
+          if (data.length) {
+            let next = findNext(data);
             setPrediction(next);
+            let additionalTimes = []
+            for(let i = data.indexOf(next) + 1; i < data.length; i++) {
+              additionalTimes.push(data[i].attributes.arrival_time ? data[i].attributes.arrival_time : data[i].attributes.departure_time)
+            }
+            setTimes(additionalTimes)
           } else {
             setPrediction({
               attributes: { error: "No prediction found." },
             });
           }
-        });
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setPrediction({
-          attributes: {
-            error: "An error occurred when trying to get your data. Try again.",
-          },
-        });
-      });
-  }
-
-  function handleClickSave() {
-    setSave(true);
-    if (prev) {
-      mySwal
-        .fire({
-          title: "Overwrite previous trip?",
-          text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
-          showCancelButton: "true",
+          setIsLoading(false);
         })
-        .then((result) => {
-          if (result.isConfirmed) {
-            window.location.reload();
-          }
+        .catch((err) => {
+          console.log(err);
+          setPrediction({
+            attributes: {
+              error: "An error occurred when trying to get your data. Try again.",
+            },
+          });
         });
-    } else {
-      window.location.reload();
-    }
-  }
-
-  function renderPrediction() {
-    return (
-      <div>
-        {prediction.attributes.error ? (
-          <h2>{prediction.attributes.error}</h2>
-        ) : (
-          <div>
-            <h2>
-              It looks like the next train from {station.name} heading{direction === "0" && mode === "commuter" ?" " : " to "}
-              {displayDirection(station, direction)} should be around
-              <br />
-              <span className="time">
-                {formatTime(
-                  prediction.attributes.arrival_time
-                    ? prediction.attributes.arrival_time
-                    : prediction.attributes.departure_time
-                )}
-              </span>
-            </h2>
-          </div>
-        )}
-        <button onClick={() => reset()}>Find another train</button>
-
-        <button onClick={() => handleClickSave()}>Save as Favorite</button>
-      </div>
-    );
-  }
-
-  function reset() {
-    setMode("");
-    setSystem([]);
-    setStation({});
-    setLine("");
-    setDirection("");
-    setPrediction({});
-    setGoVisible(false);
-    onChange();
-  }
-
-  return (
-    <>
+        
+      }
+      
+      function handleClickSave() {
+        setSave(true);
+        if (prev) {
+          mySwal
+          .fire({
+            title: "Overwrite previous trip?",
+            text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
+            showCancelButton: "true",
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
+          });
+        } else {
+          window.location.reload();
+        }
+      }
+      
+      function reset() {
+        setMode("");
+        setSystem([]);
+        setStation({});
+        setLine("");
+        setDirection("");
+        setPrediction({});
+        setGoVisible(false);
+        onFormVisible();
+        setTimes([]);
+        onReset()
+      }
+      
+   
+      return (
+        <>
       {isLoading ? (
         <Sentry />
       ) : !Object.keys(prediction).length ? (
         renderSelections()
       ) : (
-        renderPrediction()
+        <Prediction
+        prediction={prediction}
+        station={station}
+        mode={mode}
+        line={displayLineName(line)}
+        direction={direction}
+        times={times}
+        reset={reset}
+        save={handleClickSave}
+         />
       )}
     </>
   );

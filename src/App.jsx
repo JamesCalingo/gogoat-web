@@ -25,7 +25,8 @@ function App() {
 
       <Predictor
         prev={Object.keys(stored).length ? stored : null}
-        onChange={() => setIsBottomVisible(!isBottomVisible)}
+        onFormVisible={() => setIsBottomVisible(false)}
+        onReset={()=> setIsBottomVisible(true)}
       />
       {isBottomVisible ? (
         <>

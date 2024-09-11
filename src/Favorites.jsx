@@ -10,12 +10,11 @@ function Favorites(props) {
     if (Object.keys(data).length) {
   
        let url = generateURL(data, data.direction, data)
-      console.log(url)
       predict(url)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.data.length) {
-            let next = findNext(data.data);
+        .then((res) => {
+          let data = res.data.data
+          if (data.length) {
+            let next = findNext(data);
             setPrediction(next);
           } else {
             setPrediction({
