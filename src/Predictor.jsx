@@ -6,13 +6,13 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 import stations from "../stations.json";
-import { displayDirection, generateURL, predict, findNext } from "./utils";
+import { displayDirection, generateURL, predict, findNext, displayLineName } from "./utils";
 import Prediction from "./Prediction";
 
 const mySwal = withReactContent(Swal);
 
 function Predictor(props) {
-  const { prev, onFormVisible} = props;
+  const { prev, onFormVisible, onReset} = props;
 
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
@@ -256,7 +256,7 @@ function Predictor(props) {
       origin: station.name,
       mode: mode,
       line: station.line,
-      destination: line && mode === "commuter" ? line.split("-")[1] : displayDirection(station, direction),
+      destination: line && mode === "commuter" ? displayLineName(line) : displayDirection(station, direction, line ? line : null),
       id: station.id,
       direction: direction,
     });
@@ -317,7 +317,8 @@ function Predictor(props) {
         setPrediction({});
         setGoVisible(false);
         onFormVisible();
-        setTimes([])
+        setTimes([]);
+        onReset()
       }
       
    
@@ -332,6 +333,7 @@ function Predictor(props) {
         prediction={prediction}
         station={station}
         mode={mode}
+        line={displayLineName(line)}
         direction={direction}
         times={times}
         reset={reset}

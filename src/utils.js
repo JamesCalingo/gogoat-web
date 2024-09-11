@@ -27,14 +27,27 @@ export function findNext(data) {
     return data.find(item => new Date(item.attributes.departure_time) > new Date())
 }
 
-export function displayDirection(station, direction) {
+export function displayDirection(station, direction, line) {
+    const inboundTerminals = ["South Station", "North Station", "Back Bay"]
+
     return direction != 0
         ? station.destination_1
             ? station.destination_1
             : "Boston"
         : station.destination_0
             ? station.destination_0
-            : "Outbound"
+            : inboundTerminals.includes(station.name) ? line : "Outbound"
+}
+
+export function displayLineName(line) {
+    switch (line) {
+        case "CR-Providence":
+            return "Providence/Stoughton"
+        case "CR-Newburyport":
+            return "Newburyport/Rockport"
+        default:
+            return line.split("-")[1]
+    }
 }
 
 export function formatTime(timeString) {

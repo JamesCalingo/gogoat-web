@@ -6,11 +6,14 @@ function Prediction(props) {
     const {prediction,
         station,
         mode,
+        line,
         direction,
         times,
         reset,
         save
     } = props
+    
+    const inboundTerminals = ["South Station", "North Station", "Back Bay"]
 
     return (
       <div>
@@ -19,8 +22,8 @@ function Prediction(props) {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading{direction === "0" && mode === "commuter" ?" " : " to "}
-              {displayDirection(station, direction)} should be around
+              It looks like the next train from {station.name} heading{direction == 0 && mode === "commuter" && !inboundTerminals.includes(station.name) ?" " : " to "}
+              {displayDirection(station, direction, line)} should be around
               <br />
               <span className="time">
                 {formatTime(
