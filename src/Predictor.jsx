@@ -35,23 +35,6 @@ function Predictor(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [save]);
 
-  const inboundTerminals = ["North Station", "South Station"];
-  const outboundTerminals = [
-    "Middleborough/Lakeville",
-    "Kingston",
-    "Greenbush",
-    "Rockport",
-    "Newburyport",
-    "Haverhill",
-    "Lowell",
-    "Watchusett",
-    "Worcester",
-    "Needham Heights",
-    "Forge Park/495",
-    "Wickford Junction",
-    "Stoughton",
-  ];
-
   function swapMode(newMode) {
     onFormVisible(false);
     setMode(newMode);
@@ -128,6 +111,22 @@ function Predictor(props) {
   function renderDirections() {
     let destinations = [];
     if (mode === "commuter") {
+      const inboundTerminals = ["North Station", "South Station"];
+      const outboundTerminals = [
+        "Middleborough/Lakeville",
+        "Kingston",
+        "Greenbush",
+        "Rockport",
+        "Newburyport",
+        "Haverhill",
+        "Lowell",
+        "Watchusett",
+        "Worcester",
+        "Needham Heights",
+        "Forge Park/495",
+        "Wickford Junction",
+        "Stoughton",
+      ];
       if (
         inboundTerminals.includes(station.name) ||
         station.name === "Back Bay"
