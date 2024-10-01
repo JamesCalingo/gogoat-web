@@ -25,7 +25,7 @@ function Predictor(props) {
   const [times, setTimes] =useState( [])
 
   const [isLoading, setIsLoading] = useState(false);
-  const [goVisible, setGoVisible] = useState(false);
+  const [isGoVisible, setIsGoVisible] = useState(false);
 
   useEffect(() => {
     if (save) {
@@ -154,7 +154,7 @@ function Predictor(props) {
         defaultValue={"Select direction"}
         onChange={(event) => {
           setDirection(event.target.value);
-          setGoVisible(true);
+          setIsGoVisible(true);
         }}
       >
         <option disabled>Select direction</option>
@@ -205,7 +205,7 @@ function Predictor(props) {
         defaultValue={"Select direction"}
         onChange={(event) => {
           setLine(event.target.value);
-          setGoVisible(true);
+          setIsGoVisible(true);
           setDirection(0);
         }}
       >
@@ -238,7 +238,7 @@ function Predictor(props) {
           </>
         ) : null}
         <div className="buttondiv">
-          <button hidden={!goVisible} onClick={handleClickGo}>
+          <button hidden={!isGoVisible} onClick={handleClickGo}>
             Go GogoaT!
           </button>
         </div>
@@ -315,7 +315,7 @@ function Predictor(props) {
         setLine("");
         setDirection("");
         setPrediction({});
-        setGoVisible(false);
+        setIsGoVisible(false);
         onFormVisible();
         setTimes([]);
         onReset()
