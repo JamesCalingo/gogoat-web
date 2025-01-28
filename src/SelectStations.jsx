@@ -41,7 +41,6 @@ function Predictor(props) {
     setStation({});
     setDirection("");
     if (newMode === "commuter") {
-      //Setting South and North stations ahead of everything due to their status as terminals
       setSystem([
         {
           name: "South Station",
@@ -70,11 +69,9 @@ function Predictor(props) {
     return (
       <>
         <h2>Find your train instantly!</h2>
-        {mode ? <>
-        <button onClick={() => swapMode(mode === "subway" ? "commuter" : "subway")}>Switch to {mode === "subway" ? "Commuter Rail" : "Subway"}</button> </>: 
-        <>
         <p>What mode are you taking?</p>
         <button
+          className={mode === "subway" ? "selected" : null}
           onClick={() => swapMode("subway")}
         >
           Subway
@@ -83,10 +80,8 @@ function Predictor(props) {
           className={mode === "commuter" ? "selected" : null}
           onClick={() => swapMode("commuter")}
         >
-          Commuter Rail
+          Commuter
         </button>
-      </>
-      }
       </>
     );
   }
@@ -95,7 +90,6 @@ function Predictor(props) {
     return (
       <select
         defaultValue={"Select a station"}
-        disabled={!mode}
         onChange={(event) =>
           setStation(
             system.find((station) => station.name === event.target.value)
@@ -158,7 +152,6 @@ function Predictor(props) {
     return (
       <select
         defaultValue={"Select direction"}
-        disabled={!station}
         onChange={(event) => {
           setDirection(event.target.value);
           setIsGoVisible(true);
@@ -210,7 +203,6 @@ function Predictor(props) {
     return (
       <select
         defaultValue={"Select direction"}
-        disabled={!station}
         onChange={(event) => {
           setLine(event.target.value);
           setIsGoVisible(true);
@@ -233,25 +225,25 @@ function Predictor(props) {
     return (
       <div>
         {renderModes()}
-        {/* {system.length ? ( */}
+        {system.length ? (
           <>
-            <p>Select origin station</p>
+            <p>Next, what station are you travelling from?</p>
             {renderStations(system)}
-            <p>Select destination/direction of travel</p>
+          </>
+        ) : null}
+        {Object.keys(station).length ? (
+          <>
+            <p>Where are you heading towards?</p>
             {renderDirections(station)}
           </>
-        {/* ) : null} */}
-        {renderGoButton()}
+        ) : null}
+        <div className="buttondiv">
+          <button hidden={!isGoVisible} onClick={handleClickGo}>
+            Go GogoaT!
+          </button>
+        </div>
       </div>
     );
-  }
-
-  function renderGoButton() {
-    return   <div className="buttondiv">
-    <button hidden={!isGoVisible} onClick={handleClickGo}>
-      Go GogoaT!
-    </button>
-  </div>
   }
 
   function handleClickGo() {

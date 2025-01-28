@@ -41,7 +41,7 @@ function Prediction(props) {
         )}
         <button onClick={() => reset()}>Find another train</button>
 
-        <button onClick={() => save()}>Save as Favorite</button>
+      {!prediction.attributes.error ?  <button onClick={() => save()}>Save as Favorite</button> : null}
       </div>
     );
   }
