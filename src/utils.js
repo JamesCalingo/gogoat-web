@@ -7,7 +7,7 @@ export function generateURL(station, direction, line) {
     if (station.line || (station.mode === "subway")) {
         url = `https://api-v3.mbta.com/predictions?fields%5Bprediction%5D=arrival_time%2Cdeparture_time&sort=departure_time&page[limit]=6&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`;
     } else {
-        // Due to "issues" with the prediction API for commuter rail trains, I use the schedule API. This does have the 
+        // Due to "issues" with the prediction API for commuter rail, I use the schedule API
         let currentTime = new Date().toTimeString().split(" ")[0].slice(0, 5);
         url = `https://api-v3.mbta.com/schedules?sort=departure_time&page[limit]=5&fields%5Bschedule%5D=arrival_time%2Cdeparture_time&filter[min_time]=${currentTime}&filter[stop]=${station.id}&filter[direction_id]=${direction}`;
         // For the Boston terminal stations

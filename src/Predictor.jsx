@@ -37,9 +37,9 @@ function Predictor(props) {
 
   function swapMode(newMode) {
     onFormVisible(false);
+    reset()
     setMode(newMode);
-    setStation({});
-    setDirection("");
+   
     if (newMode === "commuter") {
       //Setting South and North stations ahead of everything due to their status as terminals
       setSystem([
@@ -73,7 +73,7 @@ function Predictor(props) {
         {mode ? <>
         <button onClick={() => swapMode(mode === "subway" ? "commuter" : "subway")}>Switch to {mode === "subway" ? "Commuter Rail" : "Subway"}</button> </>: 
         <>
-        <p>What mode are you taking?</p>
+        <p>Select your mode of transportation:</p>
         <button
           onClick={() => swapMode("subway")}
         >
@@ -158,7 +158,7 @@ function Predictor(props) {
     return (
       <select
         defaultValue={"Select direction"}
-        disabled={!station}
+        disabled={!Object.keys(station).length}
         onChange={(event) => {
           setDirection(event.target.value);
           setIsGoVisible(true);
@@ -233,14 +233,14 @@ function Predictor(props) {
     return (
       <div>
         {renderModes()}
-        {/* {system.length ? ( */}
+        {system.length ? (
           <>
             <p>Select origin station</p>
             {renderStations(system)}
-            <p>Select destination/direction of travel</p>
+            <p>Select {mode === "subway" ? "which station you're headed towards" : "your direction of travel"}</p>
             {renderDirections(station)}
           </>
-        {/* ) : null} */}
+         ) : null}
         {renderGoButton()}
       </div>
     );
