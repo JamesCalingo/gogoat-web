@@ -1,33 +1,45 @@
-  
-import stations from "../stations.json";
-import { displayDirection, generateURL, predict, findNext, displayLineName } from "./utils";
-import Prediction from "./Prediction";
-  
-  function Form(props){
+/* eslint-disable react/prop-types */
 
-    const {mode, station, swapMode, setStation, } = props
-  
+function Form(props) {
+  const {
+    mode,
+    swapMode,
+    system,
+    station,
+    setStation,
+    setDirection,
+    setLine,
+    isGoVisible,
+    setIsGoVisible,
+    handleClickGo
+  } = props;
+
   function renderModes() {
     return (
       <>
         <h2>Find your train instantly!</h2>
-        {mode ? <>
-        <button onClick={() => swapMode(mode === "subway" ? "commuter" : "subway")}>Switch to {mode === "subway" ? "Commuter Rail" : "Subway"}</button> </>: 
-        <>
-        <p>Select your mode of transportation:</p>
-        <button
-          onClick={() => swapMode("subway")}
-        >
-          Subway
-        </button>
-        <button
-          className={mode === "commuter" ? "selected" : null}
-          onClick={() => swapMode("commuter")}
-        >
-          Commuter Rail
-        </button>
-      </>
-      }
+        {mode ? (
+          <>
+            <button
+              onClick={() =>
+                swapMode(mode === "subway" ? "commuter" : "subway")
+              }
+            >
+              Switch to {mode === "subway" ? "Commuter Rail" : "Subway"}
+            </button>{" "}
+          </>
+        ) : (
+          <>
+            <p>Select your mode of transportation:</p>
+            <button onClick={() => swapMode("subway")}>Subway</button>
+            <button
+              className={mode === "commuter" ? "selected" : null}
+              onClick={() => swapMode("commuter")}
+            >
+              Commuter Rail
+            </button>
+          </>
+        )}
       </>
     );
   }
@@ -153,8 +165,8 @@ import Prediction from "./Prediction";
         defaultValue={"Select direction"}
         disabled={!station}
         onChange={(event) => {
-          setLine(event.target.value);
-          setIsGoVisible(true);
+            setLine(event.target.value);
+            setIsGoVisible(true);
           setDirection(0);
         }}
       >
@@ -170,23 +182,6 @@ import Prediction from "./Prediction";
     );
   }
 
-  function renderSelections() {
-    return (
-      <div>
-        {renderModes()}
-        {system.length ? (
-          <>
-            <p>Select origin station</p>
-            {renderStations(system)}
-            <p>Select {mode === "subway" ? "which station you're headed towards" : "your direction of travel"}</p>
-            {renderDirections(station)}
-          </>
-         ) : null}
-        {renderGoButton()}
-      </div>
-    );
-  }
-
   function renderGoButton() {
     return   <div className="buttondiv">
     <button hidden={!isGoVisible} onClick={handleClickGo}>
@@ -195,6 +190,27 @@ import Prediction from "./Prediction";
   </div>
   }
 
+    return (
+      <div>
+        {renderModes()}
+        {system.length ? (
+          <>
+            <p>Select origin station</p>
+            {renderStations(system)}
+            <p>
+              Select{" "}
+              {mode === "subway"
+                ? "which station you're headed towards"
+                : "your direction of travel"}
+            </p>
+            {renderDirections(station)}
+            {renderGoButton()}
+          </>
+        ) : null}
+
+      </div>
+    );
+
 }
 
-export default Form
+export default Form;

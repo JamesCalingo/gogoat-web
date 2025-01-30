@@ -22,7 +22,7 @@ function Prediction(props) {
         ) : (
           <div>
             <h2>
-              It looks like the next train from {station.name} heading{direction == 0 && mode === "commuter" && !inboundTerminals.includes(station.name) ?" " : " to "}
+              It looks like the next train from {station.name}{direction == 0 && mode === "commuter" && !inboundTerminals.includes(station.name) ?" heading " : " to "}
               {displayDirection(station, direction, line)} should be around
               <br />
               <span className="time">
