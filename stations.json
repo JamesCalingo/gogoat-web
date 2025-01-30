@@ -50,14 +50,14 @@
       "destination_1": "Alewife"
     },
     {
-      "name": "Park Street (Red Line)",
+      "name": "Park Street (Red)",
       "id": "place-pktrm",
       "line": "Red",
       "destination_0": "Ashmont/Braintree",
       "destination_1": "Alewife"
     },
     {
-      "name": "Downtown Crossing (Red Line)",
+      "name": "Downtown Crossing (Red)",
       "id": "place-dwnxg",
       "line": "Red",
       "destination_0": "Ashmont/Braintree",
@@ -155,7 +155,7 @@
       "destination_1": "Alewife"
     },
     {
-      "name": "Ashmont (Mattapan Line)",
+      "name": "Ashmont (Mattapan)",
       "id": "place-asmnl",
       "line": "Mattapan",
       "destination_0": "Mattapan",
@@ -253,28 +253,28 @@
       "destination_1": "Oak Grove"
     },
     {
-      "name": "North Station (Orange Line)",
+      "name": "North Station (Orange)",
       "id": "place-north",
       "line": "Orange",
       "destination_0": "Forest Hills",
       "destination_1": "Oak Grove"
     },
     {
-      "name": "Haymarket (Orange Line)",
+      "name": "Haymarket (Orange)",
       "id": "place-haecl",
       "line": "Orange",
       "destination_0": "Forest Hills",
       "destination_1": "Oak Grove"
     },
     {
-      "name": "State (Orange Line)",
+      "name": "State (Orange)",
       "id": "place-state",
       "line": "Orange",
       "destination_0": "Forest Hills",
       "destination_1": "Oak Grove"
     },
     {
-      "name": "Downtown Crossing (Orange Line)",
+      "name": "Downtown Crossing (Orange)",
       "id": "place-dwnxg",
       "line": "Orange",
       "destination_0": "Forest Hills",
@@ -414,14 +414,14 @@
       "destination_1": "Wonderland"
     },
     {
-      "name": "State (Blue Line)",
+      "name": "State (Blue)",
       "id": "place-state",
       "line": "Blue",
       "destination_0": "Bowdoin",
       "destination_1": "Wonderland"
     },
     {
-      "name": "Government Center (Blue Line)",
+      "name": "Government Center (Blue)",
       "id": "place-gover",
       "line": "Blue",
       "destination_0": "Bowdoin",
