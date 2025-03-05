@@ -3,8 +3,8 @@
 function Form(props) {
   const {
     mode,
-    swapMode,
     system,
+    enableForm,
     station,
     setStation,
     setDirection,
@@ -14,41 +14,13 @@ function Form(props) {
     handleClickGo
   } = props;
 
-  function renderModes() {
-    return (
-      <>
-        <h2>Find your train instantly!</h2>
-        {mode ? (
-          <>
-            <button
-              onClick={() =>
-                swapMode(mode === "subway" ? "commuter" : "subway")
-              }
-            >
-              Switch to {mode === "subway" ? "Commuter Rail" : "Subway"}
-            </button>{" "}
-          </>
-        ) : (
-          <>
-            <p>Select your mode of transportation:</p>
-            <button onClick={() => swapMode("subway")}>Subway</button>
-            <button
-              className={mode === "commuter" ? "selected" : null}
-              onClick={() => swapMode("commuter")}
-            >
-              Commuter Rail
-            </button>
-          </>
-        )}
-      </>
-    );
-  }
+
 
   function renderStations(stations) {
     return (
       <select
         defaultValue={"Select a station"}
-        disabled={!mode}
+        disabled={!enableForm}
         onChange={(event) =>
           setStation(
             system.find((station) => station.name === event.target.value)
@@ -192,7 +164,6 @@ function Form(props) {
 
     return (
       <div>
-        {renderModes()}
         {system.length ? (
           <>
             <p>Select origin station</p>
