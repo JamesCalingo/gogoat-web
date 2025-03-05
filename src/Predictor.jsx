@@ -6,26 +6,31 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 import stations from "../stations.json";
-import { displayDirection, generateURL, predict, findNext, displayLineName } from "./utils";
+import {
+  displayDirection,
+  generateURL,
+  predict,
+  findNext,
+  displayLineName,
+} from "./utils";
 import Form from "./Form";
 import Prediction from "./Prediction";
 
 const mySwal = withReactContent(Swal);
 
 function Predictor(props) {
-  const { prev, onFormVisible, onReset} = props;
+  const { prev, onFormVisible, onReset } = props;
 
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
   const [station, setStation] = useState({});
+  const [enableForm, setEnableForm] = useState(false);
   const [direction, setDirection] = useState("");
   const [line, setLine] = useState("");
-
   const [saved, setSaved] = useState({});
   const [save, setSave] = useState(false);
   const [prediction, setPrediction] = useState({});
-  const [times, setTimes] =useState( [])
-
+  const [times, setTimes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoVisible, setIsGoVisible] = useState(false);
 
@@ -39,11 +44,11 @@ function Predictor(props) {
 
   function swapMode(newMode) {
     onFormVisible(false);
-    reset()
+    reset();
     setMode(newMode);
-   
+
     if (newMode === "commuter") {
-      //Setting South and North stations ahead of everything due to their status as terminals
+      //Setting South and North Stations ahead of everything due to their status as terminals
       setSystem([
         {
           name: "South Station",
@@ -58,121 +63,184 @@ function Predictor(props) {
           return 1;
         }),
       ]);
-    } else {
-      setSystem(
-        stations[newMode].sort((a, b) => {
-          if (a.name < b.name) return -1;
-          return 1;
-        })
-      );
-    }
+      setEnableForm(true);
+    } 
+  }
+
+  function renderModes() {
+    return (
+      <>
+        <h2>Find your train instantly!</h2>
+        {mode ? (
+          <>
+            <button
+              onClick={() =>
+                swapMode(mode === "subway" ? "commuter" : "subway")
+              }
+            >
+              Switch to {mode === "subway" ? "Commuter Rail" : "Subway"}
+            </button>{" "}
+          </>
+        ) : (
+          <>
+            <p>Select your mode of transportation:</p>
+            <button onClick={() => swapMode("subway")}>Subway</button>
+            <button onClick={() => swapMode("commuter")}>Commuter Rail</button>
+          </>
+        )}
+      </>
+    );
+  }
+
+  function renderLineSelections() {
+    const lines = Object.keys(stations["subway"]).sort()
+    console.log(lines)
+    return (
+      <>
+        <p>Select a Line</p>
+        <select
+          defaultValue={"Select Line"}
+          onChange={(event) => {
+            setLine(event.target.value);
+            setSystem(stations["subway"][event.target.value]);
+            setEnableForm(true);
+          }}
+        >
+          <option disabled>Select Line</option>
+          {lines.map((line, index) => {
+            if (line.includes("-")) {
+              let split = line.split("-");
+              return (
+                <option key={index} value={line}>
+                  Green ({split[split.length - 1]} Branch)
+                </option>
+              );
+            }
+            return (
+              <option key={index} value={line}>
+                {line}
+              </option>
+            );
+          })}
+        </select>
+      </>
+    );
   }
 
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-    
+
     let url = generateURL(station, direction, line);
     console.log(url);
     setSaved({
       origin: station.name,
       mode: mode,
       line: station.line,
-      destination: line && mode === "commuter" ? displayLineName(line) : displayDirection(station, direction, line ? line : null),
+      destination:
+        line && mode === "commuter"
+          ? displayLineName(line)
+          : displayDirection(station, direction, line ? line : null),
       id: station.id,
       direction: direction,
     });
     predict(url)
       .then((res) => {
-          let data = res.data.data;
-          if (data.length) {
-            let next = findNext(data);
-            setPrediction(next);
-            let additionalTimes = []
-            for(let i = data.indexOf(next) + 1; i < data.length; i++) {
-              additionalTimes.push(data[i].attributes.arrival_time ? data[i].attributes.arrival_time : data[i].attributes.departure_time)
-            }
-            setTimes(additionalTimes)
-          } else {
-            setPrediction({
-              attributes: { error: "No prediction found." },
-            });
+        let data = res.data.data;
+        if (data.length) {
+          let next = findNext(data);
+          setPrediction(next);
+          let additionalTimes = [];
+          for (let i = data.indexOf(next) + 1; i < data.length; i++) {
+            additionalTimes.push(
+              data[i].attributes.arrival_time
+                ? data[i].attributes.arrival_time
+                : data[i].attributes.departure_time
+            );
           }
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setPrediction({
-            attributes: {
-              error: "An error occurred when trying to get your data. Try again.",
-            },
-          });
-        });
-        
-      }
-      
-      function handleClickSave() {
-        setSave(true);
-        if (prev) {
-          mySwal
-          .fire({
-            title: "Overwrite previous trip?",
-            text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
-            showCancelButton: "true",
-          })
-          .then((result) => {
-            if (result.isConfirmed) {
-              window.location.reload();
-            }
-          });
+          setTimes(additionalTimes);
         } else {
-          window.location.reload();
+          setPrediction({
+            attributes: { error: "No prediction found." },
+          });
         }
-      }
-      
-      function reset() {
-        setMode("");
-        setSystem([]);
-        setStation({});
-        setLine("");
-        setDirection("");
-        setPrediction({});
-        setIsGoVisible(false);
-        onFormVisible();
-        setTimes([]);
-        onReset()
-      }
-      
-   
-      return (
-        <>
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setPrediction({
+          attributes: {
+            error: "An error occurred when trying to get your data. Try again.",
+          },
+        });
+      });
+  }
+
+  function handleClickSave() {
+    setSave(true);
+    if (prev) {
+      mySwal
+        .fire({
+          title: "Overwrite previous trip?",
+          text: "You can only have one trip saved at a time. Would you like to overwrite the previous trip for this one?",
+          showCancelButton: "true",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+    } else {
+      window.location.reload();
+    }
+  }
+
+  function reset() {
+    setMode("");
+    setSystem([]);
+    setStation({});
+    setLine("");
+    setDirection("");
+    setPrediction({});
+    setIsGoVisible(false);
+    onFormVisible();
+    setTimes([]);
+    onReset();
+  }
+
+  return (
+    <>
       {isLoading ? (
         <Sentry />
       ) : !Object.keys(prediction).length ? (
         <>
-        <Form
-        mode={mode}
-        swapMode={swapMode}
-        system={system}
-        station={station}
-        setStation={setStation}
-        setDirection={setDirection}
-        setLine={setLine}
-        isGoVisible={isGoVisible}
-        setIsGoVisible={setIsGoVisible}
-        handleClickGo={handleClickGo} />
+          {renderModes()}
+          {mode === "subway" && renderLineSelections()}
+          <Form
+            mode={mode}
+            swapMode={swapMode}
+            system={system}
+            enableForm={enableForm}
+            station={station}
+            setStation={setStation}
+            setDirection={setDirection}
+            setLine={setLine}
+            isGoVisible={isGoVisible}
+            setIsGoVisible={setIsGoVisible}
+            handleClickGo={handleClickGo}
+          />
         </>
       ) : (
         <Prediction
-        prediction={prediction}
-        station={station}
-        mode={mode}
-        line={displayLineName(line)}
-        direction={direction}
-        times={times}
-        reset={reset}
-        save={handleClickSave}
-         />
+          prediction={prediction}
+          station={station}
+          mode={mode}
+          line={displayLineName(line)}
+          direction={direction}
+          times={times}
+          reset={reset}
+          save={handleClickSave}
+        />
       )}
     </>
   );
