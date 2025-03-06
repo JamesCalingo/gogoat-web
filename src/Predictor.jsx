@@ -94,34 +94,29 @@ function Predictor(props) {
 
   function renderLineSelections() {
     const lines = Object.keys(stations["subway"]).sort()
+    const selectLine = (value) => {
+      setLine(value);
+      setSystem(stations["subway"][value]);
+      setEnableForm(true);
+    }
     return (
       <>
         <p>Select a Line</p>
-        <select
-          defaultValue={"Select Line"}
-          onChange={(event) => {
-            setLine(event.target.value);
-            setSystem(stations["subway"][event.target.value]);
-            setEnableForm(true);
-          }}
-        >
-          <option disabled>Select Line</option>
           {lines.map((line, index) => {
             if (line.includes("-")) {
               let split = line.split("-");
               return (
-                <option key={index} value={line}>
-                  Green ({split[split.length - 1]} Branch)
-                </option>
+                <button key={index} value={line} onClick={() => selectLine(line)} className="Green">
+                  Green ({split[split.length - 1]})
+                </button>
               );
             }
             return (
-              <option key={index} value={line}>
+              <button key={index} value={line} onClick={() => selectLine(line)} className={line}>
                 {line}
-              </option>
+              </button>
             );
           })}
-        </select>
       </>
     );
   }
