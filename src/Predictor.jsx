@@ -94,7 +94,6 @@ function Predictor(props) {
 
   function renderLineSelections() {
     const lines = Object.keys(stations["subway"]).sort()
-    console.log(lines)
     return (
       <>
         <p>Select a Line</p>
