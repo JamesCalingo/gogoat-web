@@ -50,6 +50,10 @@ export function displayLineName(line) {
     }
 }
 
+export function resetSelect(select) {
+    select.selectedIndex = 0
+}
+
 export function formatTime(timeString) {
     if (!timeString) {
         return "N/A"
