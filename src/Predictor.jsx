@@ -104,6 +104,7 @@ function Predictor(props) {
           defaultValue={"Select Line"}
           onChange={(event) => {
             setStation({})
+            setIsGoVisible(false)
             setLine(event.target.value);
             setSystem(stations["subway"][event.target.value]);
             setEnableForm(true);
