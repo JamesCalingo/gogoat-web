@@ -51,6 +51,7 @@ export function displayLineName(line) {
 }
 
 export function resetSelect(select) {
+    if (!select) return
     select.selectedIndex = 0
 }
 

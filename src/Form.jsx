@@ -11,22 +11,21 @@ function Form(props) {
     setLine,
     isGoVisible,
     setIsGoVisible,
-    handleClickGo
+    handleClickGo,
   } = props;
-
-
 
   function renderStations(stations) {
     return (
       <select
-      id="stations"
+        id="stations"
         defaultValue={"Select a station"}
         disabled={!enableForm}
-        onChange={(event) =>
+        onChange={(event) => {
           setStation(
             system.find((station) => station.name === event.target.value)
-          )
-        }
+          );
+          setIsGoVisible(false);
+        }}
       >
         <option disabled>Select a station</option>
         {stations.map((station, index) => {
@@ -81,29 +80,28 @@ function Form(props) {
       destinations.push(station.destination_0, station.destination_1);
     }
 
-    return (
-      <select
-        defaultValue={"Select direction"}
-        disabled={!Object.keys(station).length}
-        onChange={(event) => {
-          setDirection(event.target.value);
-          setIsGoVisible(true);
-        }}
-      >
-        <option disabled>Select direction</option>
+    const onClick = (value) => {
+      console.log(value);
+      setDirection(value);
+      setIsGoVisible(true);
+    };
+    return Object.keys(station).length ? (
+      <>
+        <p>
+          Select{" "}
+          {mode === "subway"
+            ? "which station you're headed towards"
+            : "your direction of travel"}
+        </p>
         {destinations.map((destination, index) => {
-          return (
-            <option
-              disabled={destination ? false : true}
-              key={index}
-              value={index}
-            >
-              {destination ? destination : "---"}
-            </option>
-          );
+          return destination ? (
+            <button key={index} value={index} onClick={() => onClick(index)}>
+              {destination}
+            </button>
+          ) : null;
         })}
-      </select>
-    );
+      </>
+    ) : null;
   }
 
   // Function to render destinations for North, South, and Back Bay
@@ -134,55 +132,52 @@ function Form(props) {
     };
 
     return (
-      <select
-        defaultValue={"Select direction"}
-        disabled={!station}
-        onChange={(event) => {
+      <>
+        <p>Select line</p>
+        <select
+          defaultValue={"Select line"}
+          disabled={!station}
+          onChange={(event) => {
             setLine(event.target.value);
             setIsGoVisible(true);
-          setDirection(0);
-        }}
-      >
-        <option disabled>Select direction</option>
-        {destinations[origin].map((destination, index) => {
-          return (
-            <option key={index} value={destination.id}>
-              {destination.line}
-            </option>
-          );
-        })}
-      </select>
+            setDirection(0);
+          }}
+        >
+          <option disabled>Select line</option>
+          {destinations[origin].map((destination, index) => {
+            return (
+              <option key={index} value={destination.id}>
+                {destination.line}
+              </option>
+            );
+          })}
+        </select>
+      </>
     );
   }
 
   function renderGoButton() {
-    return   <div className="buttondiv">
-    <button hidden={!isGoVisible} onClick={handleClickGo}>
-      Go GogoaT!
-    </button>
-  </div>
-  }
-
     return (
-      <div>
-        {system.length ? (
-          <>
-            <p>Select origin station</p>
-            {renderStations(system)}
-            <p>
-              Select{" "}
-              {mode === "subway"
-                ? "which station you're headed towards"
-                : "your direction of travel"}
-            </p>
-            {renderDirections(station)}
-            {renderGoButton()}
-          </>
-        ) : null}
-
+      <div className="buttondiv">
+        <button hidden={!isGoVisible} onClick={handleClickGo}>
+          Go GogoaT!
+        </button>
       </div>
     );
+  }
 
+  return (
+    <div>
+      {system.length ? (
+        <>
+          <p>Select origin station</p>
+          {renderStations(system)}
+          {renderDirections(station)}
+          {renderGoButton()}
+        </>
+      ) : null}
+    </div>
+  );
 }
 
 export default Form;

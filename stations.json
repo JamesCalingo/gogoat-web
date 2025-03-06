@@ -405,7 +405,7 @@
       "destination_1": "Medford/Tufts"
     },
     {
-      "name": "Somerville",
+      "name": "East Somerville",
       "id": "place-esomr",
       "destination_0": "Heath Street",
       "destination_1": "Medford/Tufts"
@@ -417,7 +417,7 @@
       "destination_1": "Medford/Tufts"
     },
     {
-      "name": "Science Park/End",
+      "name": "Science Park/West End",
       "id": "place-spmnl",
       "destination_0": "Heath Street",
       "destination_1": "Medford/Tufts"
