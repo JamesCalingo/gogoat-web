@@ -19,6 +19,7 @@ function Form(props) {
   function renderStations(stations) {
     return (
       <select
+      id="stations"
         defaultValue={"Select a station"}
         disabled={!enableForm}
         onChange={(event) =>
