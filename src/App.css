@@ -17,21 +17,27 @@
   font-size: 36pt;
 }
 
-/* .red, .mattapan {
-  color: #DA291C;
+
+
+.Red, .Orange, .Blue, .Green {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.orange {
-  color: #ED8B00;
+.Red, .Mattapan {
+  background: #DA291C;
+
 }
 
-.blue {
-  color: #003DA5;
+.Orange {
+  background: #ED8B00;
 }
 
-.green-b,
-.green-c,
-.green-d,
-.green-e {
-  color: #00843D;
-} */
+.Blue {
+  background: #003DA5;
+}
+
+.Green {
+  background: #00843D;
+}

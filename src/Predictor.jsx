@@ -97,37 +97,44 @@ function Predictor(props) {
 
   function renderLineSelections() {
     const lines = Object.keys(stations["subway"]).sort()
-    return (
+    lines.splice(lines.findIndex(line => line.includes("Mattapan")), 1);
+    lines.push("Mattapan")
+    const selectLine = (value) => {
+      setLine(value);
+      setSystem(stations["subway"][value]);
+      setEnableForm(true);
+    }
+
+    const handleClickBack = () => {
+      setLine("");
+      setSystem([]);
+      setEnableForm(false);
+      setIsGoVisible(false)
+    }
+
+    return line ? 
+    <>
+    <button onClick={() => handleClickBack()}>Change Line</button>
+    <h3>{line.includes("-") ? `Green Line (${line[line.length-1]} Branch)` : `${line} Line`}</h3>
+    </>
+     : (
       <>
         <p>Select a Line</p>
-        <select
-          defaultValue={"Select Line"}
-          onChange={(event) => {
-            setStation({})
-            setIsGoVisible(false)
-            setLine(event.target.value);
-            setSystem(stations["subway"][event.target.value]);
-            setEnableForm(true);
-            resetSelect(stationsSelect);
-          }}
-        >
-          <option disabled>Select Line</option>
           {lines.map((line, index) => {
             if (line.includes("-")) {
               let split = line.split("-");
               return (
-                <option key={index} value={line}>
-                  Green ({split[split.length - 1]} Branch)
-                </option>
+                <button key={index} onClick={() => selectLine(line)} className="Green">
+                  GREEN ({split[split.length - 1]})
+                </button>
               );
             }
             return (
-              <option key={index} value={line}>
-                {line}
-              </option>
+              <button key={index} onClick={() => selectLine(line)} className={line}>
+                {line.toUpperCase()}
+              </button>
             );
           })}
-        </select>
       </>
     );
   }
@@ -135,13 +142,12 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-
     let url = generateURL(station, direction, line);
     console.log(url);
     setSaved({
       origin: station.name,
       mode: mode,
-      line: station.line,
+      line: line,
       destination:
         line && mode === "commuter"
           ? displayLineName(line)
