@@ -172,7 +172,7 @@ function Form(props) {
         <>
           <p>Select origin station</p>
           {renderStations(system)}
-          {renderDirections(station)}
+          {!!Object.keys(station).length && renderDirections(station)}
           {renderGoButton()}
         </>
       ) : null}
