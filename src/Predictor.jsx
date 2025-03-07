@@ -108,6 +108,7 @@ function Predictor(props) {
     const handleClickBack = () => {
       setLine("");
       setSystem([]);
+      setStation({})
       setEnableForm(false);
       setIsGoVisible(false)
     }
@@ -115,7 +116,7 @@ function Predictor(props) {
     return line ? 
     <>
     <button onClick={() => handleClickBack()}>Change Line</button>
-    <h3>{line.includes("-") ? `Green Line (${line[line.length-1]} Branch)` : `${line} Line`}</h3>
+    {line !== "Mattapan" ? <h3 className={line.includes("Green") ? "Green" : line}>{line.includes("-") ? `Green Line ${line[line.length-1]}` : `${line} Line`}</h3> : <h3 className="Mattapan">MATTAPAN TROLLEY</h3>}
     </>
      : (
       <>
