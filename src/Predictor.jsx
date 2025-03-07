@@ -115,8 +115,8 @@ function Predictor(props) {
 
     return line ? 
     <>
-    <button onClick={() => handleClickBack()}>Change Line</button>
     {line !== "Mattapan" ? <h3 className={line.includes("Green") ? "Green" : line}>{line.includes("-") ? `Green Line ${line[line.length-1]}` : `${line} Line`}</h3> : <h3 className="Mattapan">MATTAPAN TROLLEY</h3>}
+    <button onClick={() => handleClickBack()}>Change Line</button>
     </>
      : (
       <>
