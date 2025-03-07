@@ -12,6 +12,7 @@ import {
   predict,
   findNext,
   displayLineName,
+  resetSelect,
 } from "./utils";
 import Form from "./Form";
 import Prediction from "./Prediction";
@@ -34,6 +35,8 @@ function Predictor(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoVisible, setIsGoVisible] = useState(false);
 
+  const stationsSelect = document.getElementById("stations");
+
   useEffect(() => {
     if (save) {
       console.log(saved);
@@ -46,7 +49,7 @@ function Predictor(props) {
     onFormVisible(false);
     reset();
     setMode(newMode);
-
+    resetSelect(stationsSelect);
     if (newMode === "commuter") {
       //Setting South and North Stations ahead of everything due to their status as terminals
       setSystem([
