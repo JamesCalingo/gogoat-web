@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Favorites from "./Favorites";
 import Predictor from "./Predictor";
-import PWAMessage from "./PwaMessage";
+import PWAMessage from "./PWAMessage";
 
 function App() {
   const [stored, setStored] = useState({});
