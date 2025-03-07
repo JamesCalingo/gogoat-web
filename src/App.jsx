@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Favorites from "./Favorites";
 import Predictor from "./Predictor";
+import PWAMessage from "./PwaMessage";
 
 function App() {
   const [stored, setStored] = useState({});
@@ -29,19 +30,7 @@ function App() {
       />
       {isBottomVisible && Object.keys(stored).length ? <Favorites data={stored} /> : null}
         
-       {!window.matchMedia("(display-mode: standalone)").matches && (
-              <>
-              <p>
-                This app can be downloaded to your device. To learn more, check here:
-              </p>
-              <a
-                href="https://www.cdc.gov/niosh/mining/content/hearingloss/installPWA.html"
-                target="blank"
-              >
-                How to install a PWA
-              </a>
-            </>
-          )}
+       {!window.matchMedia("(display-mode: standalone)").matches && <PWAMessage />}
     </>
   );
 }

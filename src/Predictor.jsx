@@ -94,26 +94,41 @@ function Predictor(props) {
 
   function renderLineSelections() {
     const lines = Object.keys(stations["subway"]).sort()
+    lines.splice(lines.findIndex(line => line.includes("Mattapan")), 1);
+    lines.push("Mattapan")
     const selectLine = (value) => {
       setLine(value);
       setSystem(stations["subway"][value]);
       setEnableForm(true);
     }
-    return (
+
+    const handleClickBack = () => {
+      setLine("");
+      setSystem([]);
+      setEnableForm(false);
+      setIsGoVisible(false)
+    }
+
+    return line ? 
+    <>
+    <button onClick={() => handleClickBack()}>Change Line</button>
+    <h3>{line.includes("-") ? `Green Line (${line[line.length-1]} Branch)` : `${line} Line`}</h3>
+    </>
+     : (
       <>
         <p>Select a Line</p>
           {lines.map((line, index) => {
             if (line.includes("-")) {
               let split = line.split("-");
               return (
-                <button key={index} value={line} onClick={() => selectLine(line)} className="Green">
-                  Green ({split[split.length - 1]})
+                <button key={index} onClick={() => selectLine(line)} className="Green">
+                  GREEN ({split[split.length - 1]})
                 </button>
               );
             }
             return (
-              <button key={index} value={line} onClick={() => selectLine(line)} className={line}>
-                {line}
+              <button key={index} onClick={() => selectLine(line)} className={line}>
+                {line.toUpperCase()}
               </button>
             );
           })}
@@ -124,13 +139,12 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-
     let url = generateURL(station, direction, line);
     console.log(url);
     setSaved({
       origin: station.name,
       mode: mode,
-      line: station.line,
+      line: line,
       destination:
         line && mode === "commuter"
           ? displayLineName(line)
