@@ -5,10 +5,26 @@
   text-align: center;
 }
 
+
+
 .selected {
   background: rgb(14, 99, 170);
  border-width: 2px;
  border-color: white;
+}
+
+.sign-top {
+  margin-bottom: 0;
+  border: 1px solid black;
+}
+
+.sign-bottom {
+  margin-top: 0;
+  padding-top: 0;
+  background: white;
+  color: black;
+  text-transform: uppercase;
+  border: 1px solid black;
 }
 
 .time {
@@ -17,9 +33,16 @@
   font-size: 36pt;
 }
 
+.additional_time {
+  font-weight: bold;
+  font-size: 16pt;
+}
 
+.prediction_section_header {
+  margin-bottom: 0;
+}
 
-.Red, .Orange, .Blue, .Green, .Mattapan {
+.Red, .Orange, .Blue, .Green, .Mattapan, .commuter {
   color: white;
   text-transform: uppercase;
   font-weight: bold;
@@ -27,7 +50,6 @@
 
 .Red, .Mattapan {
   background: #DA291C;
-
 }
 
 .Orange {
@@ -40,4 +62,8 @@
 
 .Green {
   background: #00843D;
+}
+
+.commuter {
+  background: #62378B;
 }

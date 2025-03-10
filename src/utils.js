@@ -27,6 +27,16 @@ export function findNext(data) {
     return data.find(item => new Date(item.attributes.departure_time) > new Date())
 }
 
+export function checkForAlerts(station, line) {
+    let url = `https://api-v3.mbta.com/alerts?filter%5Bactivity%5D=BOARD%2CEXIT%2CRIDE&filter%5Broute%5D=${line}&filter%5Bstop%5D=${station}&filter%5Bdatetime%5D=NOW`
+    return axios.get(url)
+}
+
+export function getAlert(res) {
+  const body = res.data.data[0]
+      return body.attributes.header
+}
+
 export function displayDirection(station, direction, line) {
     const inboundTerminals = ["South Station", "North Station", "Back Bay"]
 
@@ -42,11 +52,15 @@ export function displayDirection(station, direction, line) {
 export function displayLineName(line) {
     switch (line) {
         case "CR-Providence":
-            return "Providence/Stoughton"
+            return "to Providence or Stoughton"
         case "CR-Newburyport":
-            return "Newburyport/Rockport"
+            return "to Newburyport or Rockport"
+        case "CR-Franklin":
+            return "to Franklin or Foxboro"
+        // case "CR-NewBedford":
+        //     return "to Fall River or New Bedford" COMING SOON
         default:
-            return line.split("-")[1]
+            return `TO ${line.split("-")[1]}`
     }
 }
 
