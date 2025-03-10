@@ -5,19 +5,18 @@ import "react-activity/dist/Sentry.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import stations from "../stations.json";
+import Form from "./Form";
+import Prediction from "./Prediction";
+import stations from "../../stations.json";
 import {
   displayDirection,
   generateURL,
-  predict,
   findNext,
   displayLineName,
   resetSelect,
-  checkForAlerts,
   getAlert,
-} from "./utils";
-import Form from "./Form";
-import Prediction from "./Prediction";
+} from "../utils/utils";
+import { predict, checkForAlerts } from "../utils/api";
 
 const mySwal = withReactContent(Swal);
 
@@ -197,8 +196,8 @@ function Predictor(props) {
           setTimes(additionalTimes);
           checkForAlerts(station.id, line).then((res) => {
             if (res.data.data.length) {
-              const header = getAlert(res).split(":");
-              setAlert(header[header.length - 1]);
+              const header = getAlert(res);
+              setAlert(header);
             }
           });
         } else {
@@ -207,8 +206,8 @@ function Predictor(props) {
           });
           checkForAlerts(station.id, line).then((res) => {
             if (res.data.data.length) {
-              const header = getAlert(res).split(":");
-              setAlert(header[header.length - 1]);
+              const header = getAlert(res);
+              setAlert(header);
             }
           });
         }
