@@ -1,6 +1,7 @@
 # GogoaT
 
 https://go-gogoat.net
+
 GogoaT is a train arrival and departure prediction app for the MBTA. It uses real time data from the MBTA API to provide accurate predictions.
 
 ## Local Development
