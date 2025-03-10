@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { displayDirection, displayLineName, formatTime } from "./utils";
+import { displayDirection, displayLineName, formatTime } from "../utils/utils";
 
 function Prediction(props) {
     const {prediction,
@@ -27,7 +27,7 @@ function Prediction(props) {
             <h2 className={mode === "subway" ? !line.includes("Green") ? `${line} sign-top` : "Green sign-top" : "commuter sign-top"} >{station.name}</h2>
             <h3 className="sign-bottom">{!!(mode === "subway" || direction) && "TO"} {displayDirection(station, direction, displayLineName(line))}</h3>
             <h2>
-              It looks like your train should be arriving around
+              It looks like your train should be sometime around
               <br />
               <span className="time">
                 {formatTime(

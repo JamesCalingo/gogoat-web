@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Favorites from "./Favorites";
-import Predictor from "./Predictor";
-import PWAMessage from "./PWAMessage";
+import Favorites from "./components/Favorites";
+import Predictor from "./components/Predictor";
+import PWAMessage from "./components/PWAMessage";
 
 function App() {
   const [stored, setStored] = useState({});

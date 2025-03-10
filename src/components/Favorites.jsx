@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { predict, findNext, formatTime, generateURL } from "./utils";
+import {generateURL, findNext, formatTime } from "../utils/utils";
+import { predict } from "../utils/api";
 
 function Favorites(props) {
   const [prediction, setPrediction] = useState({});
