@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { displayDirection, formatTime } from "./utils";
+import { displayDirection, displayLineName, formatTime } from "./utils";
 
 function Prediction(props) {
     const {prediction,
@@ -9,21 +9,25 @@ function Prediction(props) {
         line,
         direction,
         times,
+        alert,
         reset,
         save
     } = props
-    
-    const inboundTerminals = ["South Station", "North Station", "Back Bay"]
 
     return (
       <div>
         {prediction.attributes.error ? (
+          <>
           <h2>{prediction.attributes.error}</h2>
+          {alert && <><h2 className="prediction_section_header">ALERT:</h2><span>{alert}</span></>}
+
+          </>
         ) : (
           <div>
+            <h2 className={mode === "subway" ? !line.includes("Green") ? `${line} sign-top` : "Green sign-top" : "commuter sign-top"} >{station.name}</h2>
+            <h3 className="sign-bottom">{!!(mode === "subway" || direction) && "TO"} {displayDirection(station, direction, displayLineName(line))}</h3>
             <h2>
-              It looks like the next train from {station.name}{direction == 0 && mode === "commuter" && !inboundTerminals.includes(station.name) ?" heading " : " to "}
-              {displayDirection(station, direction, line)} should be around
+              It looks like your train should be arriving around
               <br />
               <span className="time">
                 {formatTime(
@@ -33,10 +37,11 @@ function Prediction(props) {
                 )}
               </span>
             </h2>
-            <p>Additional times:<br />{
-               times && times.length ? times.map((time, index) => <span key={index}>{formatTime(time)}<br /></span>) : "N/A"
+            <h2 className="prediction_section_header">Additional times:</h2>{
+               times && times.length ? times.map((time, index) => <span key={index} className="additional_time">{formatTime(time)}<br /></span>) : "N/A"
               }
-              </p>
+              
+              {alert && <><h2 className="prediction_section_header">ALERT:</h2><span>{alert}</span></>}
           </div>
         )}
         <button onClick={() => reset()}>Find another train</button>

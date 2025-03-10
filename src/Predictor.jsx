@@ -13,6 +13,8 @@ import {
   findNext,
   displayLineName,
   resetSelect,
+  checkForAlerts,
+  getAlert,
 } from "./utils";
 import Form from "./Form";
 import Prediction from "./Prediction";
@@ -32,6 +34,7 @@ function Predictor(props) {
   const [save, setSave] = useState(false);
   const [prediction, setPrediction] = useState({});
   const [times, setTimes] = useState([]);
+  const [alert, setAlert] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isGoVisible, setIsGoVisible] = useState(false);
 
@@ -67,7 +70,7 @@ function Predictor(props) {
         }),
       ]);
       setEnableForm(true);
-    } 
+    }
   }
 
   function renderModes() {
@@ -96,46 +99,65 @@ function Predictor(props) {
   }
 
   function renderLineSelections() {
-    const lines = Object.keys(stations["subway"]).sort()
-    lines.splice(lines.findIndex(line => line.includes("Mattapan")), 1);
-    lines.push("Mattapan")
+    const lines = Object.keys(stations["subway"]).sort();
+    lines.splice(
+      lines.findIndex((line) => line.includes("Mattapan")),
+      1
+    );
+    lines.push("Mattapan");
     const selectLine = (value) => {
       setLine(value);
       setSystem(stations["subway"][value]);
       setEnableForm(true);
-    }
+    };
 
     const handleClickBack = () => {
       setLine("");
       setSystem([]);
-      setStation({})
+      setStation({});
       setEnableForm(false);
-      setIsGoVisible(false)
-    }
+      setIsGoVisible(false);
+    };
 
-    return line ? 
-    <>
-    {line !== "Mattapan" ? <h3 className={line.includes("Green") ? "Green" : line}>{line.includes("-") ? `Green Line ${line[line.length-1]}` : `${line} Line`}</h3> : <h3 className="Mattapan">MATTAPAN TROLLEY</h3>}
-    <button onClick={() => handleClickBack()}>Change Line</button>
-    </>
-     : (
+    return line ? (
+      <>
+        {line !== "Mattapan" ? (
+          <h3 className={line.includes("Green") ? "Green" : line}>
+            {line.includes("-")
+              ? `Green Line ${line[line.length - 1]}`
+              : `${line} Line`}
+          </h3>
+        ) : (
+          <h3 className="Mattapan">MATTAPAN TROLLEY</h3>
+        )}
+        <button onClick={() => handleClickBack()}>Change Line</button>
+      </>
+    ) : (
       <>
         <p>Select a Line</p>
-          {lines.map((line, index) => {
-            if (line.includes("-")) {
-              let split = line.split("-");
-              return (
-                <button key={index} onClick={() => selectLine(line)} className="Green">
-                  GREEN ({split[split.length - 1]})
-                </button>
-              );
-            }
+        {lines.map((line, index) => {
+          if (line.includes("-")) {
+            let split = line.split("-");
             return (
-              <button key={index} onClick={() => selectLine(line)} className={line}>
-                {line.toUpperCase()}
+              <button
+                key={index}
+                onClick={() => selectLine(line)}
+                className="Green"
+              >
+                GREEN ({split[split.length - 1]})
               </button>
             );
-          })}
+          }
+          return (
+            <button
+              key={index}
+              onClick={() => selectLine(line)}
+              className={line}
+            >
+              {line.toUpperCase()}
+            </button>
+          );
+        })}
       </>
     );
   }
@@ -143,6 +165,7 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
+    setAlert("")
     let url = generateURL(station, direction, line);
     console.log(url);
     setSaved({
@@ -162,6 +185,7 @@ function Predictor(props) {
         if (data.length) {
           let next = findNext(data);
           setPrediction(next);
+
           let additionalTimes = [];
           for (let i = data.indexOf(next) + 1; i < data.length; i++) {
             additionalTimes.push(
@@ -171,9 +195,21 @@ function Predictor(props) {
             );
           }
           setTimes(additionalTimes);
+          checkForAlerts(station.id, line).then((res) => {
+            if (res.data.data.length) {
+              const header = getAlert(res).split(":");
+              setAlert(header[header.length - 1]);
+            }
+          });
         } else {
           setPrediction({
             attributes: { error: "No prediction found." },
+          });
+          checkForAlerts(station.id, line).then((res) => {
+            if (res.data.data.length) {
+              const header = getAlert(res).split(":");
+              setAlert(header[header.length - 1]);
+            }
           });
         }
         setIsLoading(false);
@@ -247,9 +283,10 @@ function Predictor(props) {
           prediction={prediction}
           station={station}
           mode={mode}
-          line={displayLineName(line)}
+          line={(line)}
           direction={direction}
           times={times}
+          alert={alert}
           reset={reset}
           save={handleClickSave}
         />

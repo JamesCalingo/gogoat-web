@@ -1104,7 +1104,7 @@
     "id": "place-WML-0081"
   },
   {
-    "name": "Newton",
+    "name": "West Newton",
     "id": "place-WML-0091"
   },
   {
@@ -1128,7 +1128,7 @@
     "id": "place-WML-0177"
   },
   {
-    "name": "Natick",
+    "name": "West Natick",
     "id": "place-WML-0199"
   },
   {
@@ -1196,15 +1196,15 @@
     "id": "place-brntn"
   },
   {
-    "name": "Weymouth Landing/Braintree",
+    "name": "Weymouth Landing/East Braintree",
     "id": "place-GRB-0118"
   },
   {
-    "name": "Weymouth",
+    "name": "East Weymouth",
     "id": "place-GRB-0146"
   },
   {
-    "name": "Hingham",
+    "name": "West Hingham",
     "id": "place-GRB-0162"
   },
   {
@@ -1271,30 +1271,30 @@
     "name": "Middleborough/Lakeville",
     "id": "place-MM-0356"
   },
-  {
-    "name": "Middleborough",
-    "id": ""
-  },
-  {
-    "name": "East Taunton",
-    "id": ""
-  },
-  {
-    "name": "Freetown",
-    "id": ""
-  },
-  {
-    "name": "Fall River",
-    "id": ""
-  },
-  {
-    "name": "Church Street",
-    "id": ""
-  },
-  {
-    "name": "New Bedford",
-    "id": ""
-  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   {
     "name": "Chelsea",
     "id": "place-chels"
