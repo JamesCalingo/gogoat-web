@@ -171,6 +171,7 @@ function Form(props) {
     <div>
       {system.length ? (
         <>
+        {mode === "commuter" && <h3 className="commuter">Commuter Rail</h3>}
           <p>Select origin station</p>
           {renderStations(system)}
           {!!Object.keys(station).length && renderDirections(station)}
