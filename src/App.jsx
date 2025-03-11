@@ -19,14 +19,10 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>GogoaT</h1>
-      </div>
-
       <Predictor
         prev={Object.keys(stored).length ? stored : null}
         onFormVisible={() => setIsBottomVisible(false)}
-        onReset={()=> setIsBottomVisible(true)}
+        onNoModeSelected={()=> setIsBottomVisible(true)}
       />
       {isBottomVisible && Object.keys(stored).length ? <Favorites data={stored} /> : null}
         

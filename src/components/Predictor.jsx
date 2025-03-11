@@ -21,7 +21,7 @@ import { predict, checkForAlerts } from "../utils/api";
 const mySwal = withReactContent(Swal);
 
 function Predictor(props) {
-  const { prev, onFormVisible, onReset } = props;
+  const { prev, onFormVisible, onNoModeSelected } = props;
 
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
@@ -48,7 +48,7 @@ function Predictor(props) {
   }, [save]);
 
   function swapMode(newMode) {
-    onFormVisible(false);
+    onFormVisible();
     reset();
     setMode(newMode);
     resetSelect(stationsSelect);
@@ -73,9 +73,11 @@ function Predictor(props) {
   }
 
   function renderModes() {
+    if (!mode) {
+      onNoModeSelected();
+    }
     return (
       <>
-        <h2>Find your train instantly!</h2>
         {mode ? (
           <>
             <button
@@ -94,6 +96,15 @@ function Predictor(props) {
           </>
         )}
       </>
+    );
+  }
+
+  function renderHeader() {
+    return (
+      <div>
+        <h1>GogoaT</h1>
+        <h2>Find your train instantly!</h2>
+      </div>
     );
   }
 
@@ -164,7 +175,7 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-    setAlert("")
+    setAlert("");
     let url = generateURL(station, direction, line);
     console.log(url);
     setSaved({
@@ -252,7 +263,6 @@ function Predictor(props) {
     setIsGoVisible(false);
     onFormVisible();
     setTimes([]);
-    onReset();
   }
 
   return (
@@ -261,6 +271,7 @@ function Predictor(props) {
         <Sentry />
       ) : !Object.keys(prediction).length ? (
         <>
+          {renderHeader()}
           {renderModes()}
           {mode === "subway" && renderLineSelections()}
           <Form
@@ -282,7 +293,7 @@ function Predictor(props) {
           prediction={prediction}
           station={station}
           mode={mode}
-          line={(line)}
+          line={line}
           direction={direction}
           times={times}
           alert={alert}
