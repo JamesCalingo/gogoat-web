@@ -7,8 +7,8 @@
 
 .selected {
   background: rgb(14, 99, 170);
- border-width: 2px;
- border-color: white;
+  border-width: 2px;
+  border-color: white;
 }
 
 .sign-top {
@@ -40,13 +40,19 @@
   margin-bottom: 0;
 }
 
-.Red, .Orange, .Blue, .Green, .Mattapan, .commuter {
+.Red,
+.Orange,
+.Blue,
+.Green,
+.Mattapan,
+.commuter {
   color: white;
   text-transform: uppercase;
   font-weight: bold;
 }
 
-.Red, .Mattapan {
+.Red,
+.Mattapan {
   background: #DA291C;
 }
 
@@ -64,4 +70,13 @@
 
 .commuter {
   background: #62378B;
+}
+
+.go {
+  background: teal;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 20pt;
+  color: white;
+  font-weight: bold;
 }

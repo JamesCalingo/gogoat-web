@@ -3,79 +3,79 @@
     {
       "name": "Alewife",
       "id": "place-alfcl",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": ""
     },
     {
       "name": "Davis",
       "id": "place-davis",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Porter",
       "id": "place-portr",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Harvard",
       "id": "place-harsq",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Central",
       "id": "place-cntsq",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Kendall",
       "id": "place-knncl",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Charles/MGH",
       "id": "place-chmnl",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Park Street",
       "id": "place-pktrm",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Downtown Crossing",
       "id": "place-dwnxg",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "South Station",
       "id": "place-sstat",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Broadway",
       "id": "place-brdwy",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "Andrew",
       "id": "place-andrw",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
       "name": "JFK/UMass",
       "id": "place-jfk",
-      "destination_0": "Ashmont/Braintree",
+      "destination_0": ["Ashmont", "Braintree"],
       "destination_1": "Alewife"
     },
     {
