@@ -1,8 +1,11 @@
-export function generateURL(station, direction, line) {
+export function generateURL(station, direction, line, pattern) {
     let url = ""
 
-    if (station.line || (station.mode === "subway")) {
-        url = `https://api-v3.mbta.com/predictions?fields%5Bprediction%5D=arrival_time%2Cdeparture_time&sort=departure_time&page[limit]=6&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`;
+    if (pattern) {
+        return `https://api-v3.mbta.com/predictions?fields%5Bprediction%5D=arrival_time%2Cdeparture_time&sort=departure_time&page[limit]=6&filter[stop]=${station.id}&filter[route]=${station.line}&filter[direction_id]=${direction}&filter[route_pattern]=${pattern}&filter[revenue]=REVENUE`
+    }
+    if (line || (station.mode === "subway")) {
+        return `https://api-v3.mbta.com/predictions?fields%5Bprediction%5D=arrival_time%2Cdeparture_time&sort=departure_time&page[limit]=6&filter[stop]=${station.id}&filter[route]=${line}&filter[direction_id]=${direction}&filter[revenue]=REVENUE`;
     } else {
         // Due to "issues" with the prediction API for commuter rail, I use the schedule API
         let currentTime = new Date().toTimeString().split(" ")[0].slice(0, 5);
@@ -21,11 +24,15 @@ export function findNext(data) {
 }
 
 export function getAlert(res) {
-  const body = res.data.data[0]
-      return body.attributes.header
+    const body = res.data.data[0]
+    return body.attributes.header
 }
 
-export function displayDirection(station, direction, line) {
+export function distinguishRL(pattern) {
+    return pattern === "Red-1-0" ? "Ashmont" : "Braintree"
+}
+
+export function displayDirection(station, direction, line, pattern) {
     const inboundTerminals = ["South Station", "North Station", "Back Bay"]
 
     return direction != 0
@@ -34,7 +41,7 @@ export function displayDirection(station, direction, line) {
             : "Boston"
         : station.destination_0
             // This is a bit of a hack to make the Ashmont/Braintree line more readable
-            ? station.destination_0 === "Ashmont/Braintree" ? "Ashmont or Braintree" : station.destination_0
+            ? pattern ? (distinguishRL(pattern)): station.destination_0
             // For North/South/Back Bay stations
             : inboundTerminals.includes(station.name) ? line : "Outbound"
 }

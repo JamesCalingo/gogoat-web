@@ -9,6 +9,7 @@ import Form from "./Form";
 import Prediction from "./Prediction";
 import stations from "../../stations.json";
 import {
+  distinguishRL,
   displayDirection,
   generateURL,
   findNext,
@@ -29,6 +30,7 @@ function Predictor(props) {
   const [enableForm, setEnableForm] = useState(false);
   const [direction, setDirection] = useState("");
   const [line, setLine] = useState("");
+  const [pattern, setPattern] = useState("");
   const [saved, setSaved] = useState({});
   const [save, setSave] = useState(false);
   const [prediction, setPrediction] = useState({});
@@ -176,13 +178,16 @@ function Predictor(props) {
     setIsLoading(true);
     setSave(false);
     setAlert("");
-    let url = generateURL(station, direction, line);
+    console.log(pattern)
+    let url = generateURL(station, direction, line, pattern);
     console.log(url);
     setSaved({
       origin: station.name,
       mode: mode,
       line: line,
+      pattern: pattern,
       destination:
+      pattern ? distinguishRL(pattern) :
         line && mode === "commuter"
           ? displayLineName(line)
           : displayDirection(station, direction, line ? line : null),
@@ -259,6 +264,7 @@ function Predictor(props) {
     setStation({});
     setLine("");
     setDirection("");
+    setPattern("")
     setPrediction({});
     setIsGoVisible(false);
     onFormVisible();
@@ -282,6 +288,7 @@ function Predictor(props) {
             station={station}
             setStation={setStation}
             setDirection={setDirection}
+            setPattern={setPattern}
             setLine={setLine}
             isGoVisible={isGoVisible}
             setIsGoVisible={setIsGoVisible}
@@ -294,6 +301,7 @@ function Predictor(props) {
           station={station}
           mode={mode}
           line={line}
+          pattern={pattern}
           direction={direction}
           times={times}
           alert={alert}

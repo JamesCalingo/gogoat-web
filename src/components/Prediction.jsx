@@ -7,6 +7,7 @@ function Prediction(props) {
         station,
         mode,
         line,
+        pattern,
         direction,
         times,
         alert,
@@ -19,13 +20,13 @@ function Prediction(props) {
         {prediction.attributes.error ? (
           <>
           <h2>{prediction.attributes.error}</h2>
-          {alert && <><h2 className="prediction_section_header">ALERT:</h2><span>{alert}</span></>}
+          {!!alert && <><h2 className="prediction_section_header">ALERT:</h2><span>{alert}</span></>}
 
           </>
         ) : (
           <div>
             <h2 className={mode === "subway" ? !line.includes("Green") ? `${line} sign-top` : "Green sign-top" : "commuter sign-top"} >{station.name}</h2>
-            <h3 className="sign-bottom">{!!(mode === "subway" || direction) && "TO"} {displayDirection(station, direction, displayLineName(line))}</h3>
+            <h3 className="sign-bottom">{!!(mode === "subway" || direction) && "TO"} {displayDirection(station, direction, displayLineName(line), pattern)}</h3>
             <h2>
               It looks like your train should be sometime around
               <br />

@@ -6,11 +6,13 @@ import { predict } from "../utils/api";
 function Favorites(props) {
   const [prediction, setPrediction] = useState({});
   const { data } = props;
+  console.log(data)
 
   useEffect(() => {
     if (Object.keys(data).length) {
   
-       let url = generateURL(data, data.direction, data)
+       let url = generateURL(data, data.direction, data.line, data.pattern)
+       console.log(url)
       predict(url)
         .then((res) => {
           let data = res.data.data
