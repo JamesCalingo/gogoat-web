@@ -1,21 +1,21 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import {generateURL, findNext, formatTime } from "../utils/utils";
-import { predict } from "../utils/api";
+import { generateURL, findNext, formatTime, getAlert } from "../utils/utils";
+import { checkForAlerts, predict } from "../utils/api";
 
 function Favorites(props) {
   const [prediction, setPrediction] = useState({});
+  const [alert, setAlert] = useState("");
   const { data } = props;
-  console.log(data)
+  console.log(data);
 
   useEffect(() => {
     if (Object.keys(data).length) {
-  
-       let url = generateURL(data, data.direction, data.line, data.pattern)
-       console.log(url)
+      let url = generateURL(data, data.direction, data.line, data.pattern);
+      console.log(url);
       predict(url)
         .then((res) => {
-          let data = res.data.data
+          let data = res.data.data;
           if (data.length) {
             let next = findNext(data);
             setPrediction(next);
@@ -35,13 +35,19 @@ function Favorites(props) {
             },
           });
         });
+      checkForAlerts(data.id, data.line).then((res) => {
+        if (res.data.data.length) {
+          const header = getAlert(res);
+          setAlert(header);
+        }
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   function handlePressClear() {
-    localStorage.clear()
-    window.location.reload()
+    localStorage.clear();
+    window.location.reload();
   }
 
   return (
@@ -64,6 +70,12 @@ function Favorites(props) {
             : "..."}
         </span>
       </h2>
+      {!!alert && (
+        <>
+          <h3>ALERT:</h3>
+          <p>{alert}</p>
+        </>
+      )}
       <button onClick={handlePressClear}>Clear</button>
     </>
   );
