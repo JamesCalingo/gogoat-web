@@ -5,24 +5,24 @@ import "react-activity/dist/Sentry.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import stations from "../stations.json";
+import Form from "./Form";
+import Prediction from "./Prediction";
+import stations from "../../stations.json";
 import {
+  distinguishRL,
   displayDirection,
   generateURL,
-  predict,
   findNext,
   displayLineName,
   resetSelect,
-  checkForAlerts,
   getAlert,
-} from "./utils";
-import Form from "./Form";
-import Prediction from "./Prediction";
+} from "../utils/utils";
+import { predict, checkForAlerts } from "../utils/api";
 
 const mySwal = withReactContent(Swal);
 
 function Predictor(props) {
-  const { prev, onFormVisible, onReset } = props;
+  const { prev, onFormVisible, onNoModeSelected } = props;
 
   const [mode, setMode] = useState("");
   const [system, setSystem] = useState([]);
@@ -30,6 +30,7 @@ function Predictor(props) {
   const [enableForm, setEnableForm] = useState(false);
   const [direction, setDirection] = useState("");
   const [line, setLine] = useState("");
+  const [pattern, setPattern] = useState("");
   const [saved, setSaved] = useState({});
   const [save, setSave] = useState(false);
   const [prediction, setPrediction] = useState({});
@@ -49,7 +50,7 @@ function Predictor(props) {
   }, [save]);
 
   function swapMode(newMode) {
-    onFormVisible(false);
+    onFormVisible();
     reset();
     setMode(newMode);
     resetSelect(stationsSelect);
@@ -74,9 +75,11 @@ function Predictor(props) {
   }
 
   function renderModes() {
+    if (!mode) {
+      onNoModeSelected();
+    }
     return (
       <>
-        <h2>Find your train instantly!</h2>
         {mode ? (
           <>
             <button
@@ -95,6 +98,15 @@ function Predictor(props) {
           </>
         )}
       </>
+    );
+  }
+
+  function renderHeader() {
+    return (
+      <div>
+        <h1>GogoaT</h1>
+        <h2>Find your train instantly!</h2>
+      </div>
     );
   }
 
@@ -165,14 +177,17 @@ function Predictor(props) {
   function handleClickGo() {
     setIsLoading(true);
     setSave(false);
-    setAlert("")
-    let url = generateURL(station, direction, line);
+    setAlert("");
+    console.log(pattern)
+    let url = generateURL(station, direction, line, pattern);
     console.log(url);
     setSaved({
       origin: station.name,
       mode: mode,
       line: line,
+      pattern: pattern,
       destination:
+      pattern ? distinguishRL(pattern) :
         line && mode === "commuter"
           ? displayLineName(line)
           : displayDirection(station, direction, line ? line : null),
@@ -197,8 +212,8 @@ function Predictor(props) {
           setTimes(additionalTimes);
           checkForAlerts(station.id, line).then((res) => {
             if (res.data.data.length) {
-              const header = getAlert(res).split(":");
-              setAlert(header[header.length - 1]);
+              const header = getAlert(res);
+              setAlert(header);
             }
           });
         } else {
@@ -207,8 +222,8 @@ function Predictor(props) {
           });
           checkForAlerts(station.id, line).then((res) => {
             if (res.data.data.length) {
-              const header = getAlert(res).split(":");
-              setAlert(header[header.length - 1]);
+              const header = getAlert(res);
+              setAlert(header);
             }
           });
         }
@@ -249,11 +264,11 @@ function Predictor(props) {
     setStation({});
     setLine("");
     setDirection("");
+    setPattern("")
     setPrediction({});
     setIsGoVisible(false);
     onFormVisible();
     setTimes([]);
-    onReset();
   }
 
   return (
@@ -262,6 +277,7 @@ function Predictor(props) {
         <Sentry />
       ) : !Object.keys(prediction).length ? (
         <>
+          {renderHeader()}
           {renderModes()}
           {mode === "subway" && renderLineSelections()}
           <Form
@@ -272,6 +288,7 @@ function Predictor(props) {
             station={station}
             setStation={setStation}
             setDirection={setDirection}
+            setPattern={setPattern}
             setLine={setLine}
             isGoVisible={isGoVisible}
             setIsGoVisible={setIsGoVisible}
@@ -283,7 +300,8 @@ function Predictor(props) {
           prediction={prediction}
           station={station}
           mode={mode}
-          line={(line)}
+          line={line}
+          pattern={pattern}
           direction={direction}
           times={times}
           alert={alert}

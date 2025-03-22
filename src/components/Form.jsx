@@ -8,6 +8,7 @@ function Form(props) {
     station,
     setStation,
     setDirection,
+    setPattern,
     setLine,
     isGoVisible,
     setIsGoVisible,
@@ -77,13 +78,24 @@ function Form(props) {
         destinations.push("Outbound", "Boston");
       }
     } else {
-      destinations.push(station.destination_0, station.destination_1);
+      const isRedSB = typeof station.destination_0 === "object";
+      if (isRedSB) {
+        destinations.push(...station.destination_0, station.destination_1);
+      } else {
+        destinations.push(station.destination_0, station.destination_1);
+      }
     }
 
-    const onClick = (value) => {
+    const onClick = (value, destination) => {
       console.log(value);
       setDirection(value);
       setIsGoVisible(true);
+      if(destination === "Ashmont") {
+        console.log("ASHMONT")
+        setPattern("Red-1-0")
+      }if(destination === "Braintree") {
+        setPattern("Red-3-0")
+      }
     };
     return Object.keys(station).length ? (
       <>
@@ -95,7 +107,10 @@ function Form(props) {
         </p>
         {destinations.map((destination, index) => {
           return destination ? (
-            <button key={index} value={index} onClick={() => onClick(index)}>
+            <button
+              key={index}
+              onClick={() => onClick(destination === "Braintree" ? 0 : index > 1 ? 1 : index, destination)}
+            >
               {destination}
             </button>
           ) : null;
@@ -159,8 +174,8 @@ function Form(props) {
   function renderGoButton() {
     return (
       <div className="buttondiv">
-        <button hidden={!isGoVisible} onClick={handleClickGo}>
-          Go GogoaT!
+        <button className="go" hidden={!isGoVisible} onClick={handleClickGo}>
+          Go GogoaT
         </button>
       </div>
     );
@@ -170,6 +185,7 @@ function Form(props) {
     <div>
       {system.length ? (
         <>
+          {mode === "commuter" && <h3 className="commuter">Commuter Rail</h3>}
           <p>Select origin station</p>
           {renderStations(system)}
           {!!Object.keys(station).length && renderDirections(station)}

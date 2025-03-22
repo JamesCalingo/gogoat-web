@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Favorites from "./Favorites";
-import Predictor from "./Predictor";
-import PWAMessage from "./PWAMessage";
+import Favorites from "./components/Favorites";
+import Predictor from "./components/Predictor";
+import PWAMessage from "./components/PWAMessage";
 
 function App() {
   const [stored, setStored] = useState({});
@@ -19,14 +19,10 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>GogoaT</h1>
-      </div>
-
       <Predictor
         prev={Object.keys(stored).length ? stored : null}
         onFormVisible={() => setIsBottomVisible(false)}
-        onReset={()=> setIsBottomVisible(true)}
+        onNoModeSelected={()=> setIsBottomVisible(true)}
       />
       {isBottomVisible && Object.keys(stored).length ? <Favorites data={stored} /> : null}
         
