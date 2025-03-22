@@ -54,6 +54,8 @@ export function displayLineName(line) {
             return "to Newburyport or Rockport"
         case "CR-Franklin":
             return "to Franklin or Foxboro"
+        case "CR-NewBedford":
+            return "to Fall River or New Bedford"
         default:
             return `to ${line.split("-")[1]}`
     }

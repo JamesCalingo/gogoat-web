@@ -1,1518 +1,1516 @@
-{"subway": {
-  "Red": [
-    {
-      "name": "Alewife",
-      "id": "place-alfcl",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": ""
-    },
-    {
-      "name": "Davis",
-      "id": "place-davis",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Porter",
-      "id": "place-portr",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Harvard",
-      "id": "place-harsq",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Central",
-      "id": "place-cntsq",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Kendall",
-      "id": "place-knncl",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Charles/MGH",
-      "id": "place-chmnl",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Park Street",
-      "id": "place-pktrm",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Downtown Crossing",
-      "id": "place-dwnxg",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "South Station",
-      "id": "place-sstat",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Broadway",
-      "id": "place-brdwy",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Andrew",
-      "id": "place-andrw",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "JFK/UMass",
-      "id": "place-jfk",
-      "destination_0": ["Ashmont", "Braintree"],
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Savin Hill",
-      "id": "place-shmnl",
-      "destination_0": "Ashmont",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Fields Corner",
-      "id": "place-fldcr",
-      "destination_0": "Ashmont",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Shawmut",
-      "id": "place-smmnl",
-      "destination_0": "Ashmont",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Ashmont",
-      "id": "place-asmnl",
-      "destination_0": "",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "North Quincy",
-      "id": "place-nqncy",
-      "destination_0": "Braintree",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Wollaston",
-      "id": "place-wlsta",
-      "destination_0": "Braintree",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Quincy Center",
-      "id": "place-qnctr",
-      "destination_0": "Braintree",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Quincy Adams",
-      "id": "place-qamnl",
-      "destination_0": "Braintree",
-      "destination_1": "Alewife"
-    },
-    {
-      "name": "Braintree",
-      "id": "place-brntn",
-      "destination_0": "",
-      "destination_1": "Alewife"
-    }
-  ],
-  "Mattapan": [
-    {
-      "name": "Ashmont",
-      "id": "place-asmnl",
-      "destination_0": "Mattapan",
-      "destination_1": ""
-    },
-    {
-      "name": "Cedar Grove",
-      "id": "place-cedgr",
-      "destination_0": "Mattapan",
-      "destination_1": "Ashmont"
-    },
-    {
-      "name": "Butler",
-      "id": "place-butlr",
-      "destination_0": "Mattapan",
-      "destination_1": "Ashmont"
-    },
-    {
-      "name": "Milton",
-      "id": "place-miltt",
-      "destination_0": "Mattapan",
-      "destination_1": "Ashmont"
-    },
-    {
-      "name": "Central Avenue",
-      "id": "place-cenav",
-      "destination_0": "Mattapan",
-      "destination_1": "Ashmont"
-    },
-    {
-      "name": "Valley Road",
-      "id": "place-valrd",
-      "destination_0": "Mattapan",
-      "destination_1": "Ashmont"
-    },
-    {
-      "name": "Capen Street",
-      "id": "place-capst",
-      "destination_0": "Mattapan",
-      "destination_1": "Ashmont"
-    },
-    {
-      "name": "Mattapan",
-      "id": "place-matt",
-      "destination_0": "",
-      "destination_1": "Ashmont"
-    }
-  ],
-  "Orange": [
-    {
-      "name": "Oak Grove",
-      "id": "place-ogmnl",
-      "destination_0": "Forest Hills",
-      "destination_1": ""
-    },
-    {
-      "name": "Malden Center",
-      "id": "place-mlmnl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Wellington",
-      "id": "place-welln",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Assembly",
-      "id": "place-astao",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Sullivan Square",
-      "id": "place-sull",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Community College",
-      "id": "place-ccmnl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "North Station",
-      "id": "place-north",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Haymarket",
-      "id": "place-haecl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "State",
-      "id": "place-state",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Downtown Crossing",
-      "id": "place-dwnxg",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Chinatown",
-      "id": "place-chncl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Tufts Medical Center",
-      "id": "place-tumnl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
+{
+  "subway": {
+    "Red": [
+      {
+        "name": "Alewife",
+        "id": "place-alfcl",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": ""
+      },
+      {
+        "name": "Davis",
+        "id": "place-davis",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Porter",
+        "id": "place-portr",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Harvard",
+        "id": "place-harsq",
+        "destination_0": "Ashmont/Braintree",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Central",
+        "id": "place-cntsq",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Kendall",
+        "id": "place-knncl",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Charles/MGH",
+        "id": "place-chmnl",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Park Street",
+        "id": "place-pktrm",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Downtown Crossing",
+        "id": "place-dwnxg",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "South Station",
+        "id": "place-sstat",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Broadway",
+        "id": "place-brdwy",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Andrew",
+        "id": "place-andrw",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "JFK/UMass",
+        "id": "place-jfk",
+        "destination_0": ["Ashmont", "Braintree"],
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Savin Hill",
+        "id": "place-shmnl",
+        "destination_0": "Ashmont",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Fields Corner",
+        "id": "place-fldcr",
+        "destination_0": "Ashmont",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Shawmut",
+        "id": "place-smmnl",
+        "destination_0": "Ashmont",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Ashmont",
+        "id": "place-asmnl",
+        "destination_0": "",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "North Quincy",
+        "id": "place-nqncy",
+        "destination_0": "Braintree",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Wollaston",
+        "id": "place-wlsta",
+        "destination_0": "Braintree",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Quincy Center",
+        "id": "place-qnctr",
+        "destination_0": "Braintree",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Quincy Adams",
+        "id": "place-qamnl",
+        "destination_0": "Braintree",
+        "destination_1": "Alewife"
+      },
+      {
+        "name": "Braintree",
+        "id": "place-brntn",
+        "destination_0": "",
+        "destination_1": "Alewife"
+      }
+    ],
+    "Mattapan": [
+      {
+        "name": "Ashmont",
+        "id": "place-asmnl",
+        "destination_0": "Mattapan",
+        "destination_1": ""
+      },
+      {
+        "name": "Cedar Grove",
+        "id": "place-cedgr",
+        "destination_0": "Mattapan",
+        "destination_1": "Ashmont"
+      },
+      {
+        "name": "Butler",
+        "id": "place-butlr",
+        "destination_0": "Mattapan",
+        "destination_1": "Ashmont"
+      },
+      {
+        "name": "Milton",
+        "id": "place-miltt",
+        "destination_0": "Mattapan",
+        "destination_1": "Ashmont"
+      },
+      {
+        "name": "Central Avenue",
+        "id": "place-cenav",
+        "destination_0": "Mattapan",
+        "destination_1": "Ashmont"
+      },
+      {
+        "name": "Valley Road",
+        "id": "place-valrd",
+        "destination_0": "Mattapan",
+        "destination_1": "Ashmont"
+      },
+      {
+        "name": "Capen Street",
+        "id": "place-capst",
+        "destination_0": "Mattapan",
+        "destination_1": "Ashmont"
+      },
+      {
+        "name": "Mattapan",
+        "id": "place-matt",
+        "destination_0": "",
+        "destination_1": "Ashmont"
+      }
+    ],
+    "Orange": [
+      {
+        "name": "Oak Grove",
+        "id": "place-ogmnl",
+        "destination_0": "Forest Hills",
+        "destination_1": ""
+      },
+      {
+        "name": "Malden Center",
+        "id": "place-mlmnl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Wellington",
+        "id": "place-welln",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Assembly",
+        "id": "place-astao",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Sullivan Square",
+        "id": "place-sull",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Community College",
+        "id": "place-ccmnl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "North Station",
+        "id": "place-north",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Haymarket",
+        "id": "place-haecl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "State",
+        "id": "place-state",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Downtown Crossing",
+        "id": "place-dwnxg",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Chinatown",
+        "id": "place-chncl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Tufts Medical Center",
+        "id": "place-tumnl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Back Bay",
+        "id": "place-bbsta",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Massachusetts Avenue",
+        "id": "place-masta",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Ruggles",
+        "id": "place-rugg",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Roxbury Crossing",
+        "id": "place-rcmnl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Jackson Square",
+        "id": "place-jaksn",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Stony Brook",
+        "id": "place-sbmnl",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Green Street",
+        "id": "place-grnst",
+        "destination_0": "Forest Hills",
+        "destination_1": "Oak Grove"
+      },
+      {
+        "name": "Forest Hills",
+        "id": "place-forhl",
+        "destination_0": "",
+        "destination_1": "Oak Grove"
+      }
+    ],
+    "Blue": [
+      {
+        "name": "Wonderland",
+        "id": "place-wondl",
+        "destination_0": "Bowdoin",
+        "destination_1": ""
+      },
+      {
+        "name": "Revere Beach",
+        "id": "place-rbmnl",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Beachmont",
+        "id": "place-bmmnl",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Suffolk Downs",
+        "id": "place-sdmnl",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Orient Heights",
+        "id": "place-orhte",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Wood Island",
+        "id": "place-wimnl",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Airport",
+        "id": "place-aport",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Maverick",
+        "id": "place-mvbcl",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Aquarium",
+        "id": "place-aqucl",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "State",
+        "id": "place-state",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Government Center",
+        "id": "place-gover",
+        "destination_0": "Bowdoin",
+        "destination_1": "Wonderland"
+      },
+      {
+        "name": "Bowdoin",
+        "id": "place-bomnl",
+        "destination_0": "",
+        "destination_1": "Wonderland"
+      }
+    ],
+    "Green-E": [
+      {
+        "name": "Medford/Tufts",
+        "id": "place-mdftf",
+        "destination_0": "Heath Street",
+        "destination_1": ""
+      },
+      {
+        "name": "Ball Square",
+        "id": "place-balsq",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Magoun Square",
+        "id": "place-mgngl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Gilman Square",
+        "id": "place-gilmn",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "East Somerville",
+        "id": "place-esomr",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Lechmere",
+        "id": "place-lech",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Science Park/West End",
+        "id": "place-spmnl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "North Station",
+        "id": "place-north",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Haymarket",
+        "id": "place-haecl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Government Center",
+        "id": "place-gover",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Park Street",
+        "id": "place-pktrm",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Boylston",
+        "id": "place-boyls",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Arlington",
+        "id": "place-armnl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Copley",
+        "id": "place-coecl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Prudential",
+        "id": "place-prmnl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Symphony",
+        "id": "place-symcl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Northeastern",
+        "id": "place-nuniv",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Museum of Fine Arts",
+        "id": "place-mfa",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Longwood Medical Area",
+        "id": "place-lngmd",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Brigham Circle",
+        "id": "place-brmnl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Fenwood Road",
+        "id": "place-fenwd",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Mission Park",
+        "id": "place-mispk",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Riverway",
+        "id": "place-rvrwy",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Back of the Hill",
+        "id": "place-bckhl",
+        "destination_0": "Heath Street",
+        "destination_1": "Medford/Tufts"
+      },
+      {
+        "name": "Heath Street",
+        "id": "place-hsmnl",
+        "destination_0": "",
+        "destination_1": "Medford/Tufts"
+      }
+    ],
+    "Green-D": [
+      {
+        "name": "Union Square",
+        "id": "place-unsqu",
+        "destination_0": "Riverside",
+        "destination_1": ""
+      },
+      {
+        "name": "Lechmere",
+        "id": "place-lech",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Science Park/West End",
+        "id": "place-spmnl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "North Station",
+        "id": "place-north",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Haymarket",
+        "id": "place-haecl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Government Center",
+        "id": "place-gover",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Park Street",
+        "id": "place-pktrm",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Boylston",
+        "id": "place-boyls",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Arlington",
+        "id": "place-armnl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Copley",
+        "id": "place-coecl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Hynes Convention Center",
+        "id": "place-hymnl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Kenmore",
+        "id": "place-kencl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Fenway",
+        "id": "place-fenwy",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Longwood",
+        "id": "place-longw",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Brookline Village",
+        "id": "place-bvmnl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Brookline Hills",
+        "id": "place-brkhl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Beaconfield",
+        "id": "place-bcnfd",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Reservoir",
+        "id": "place-rsmnl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Chestnut Hill",
+        "id": "place-chhil",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Newton Centre",
+        "id": "place-newto",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Newton Highlands",
+        "id": "place-newtn",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Eliot",
+        "id": "place-eliot",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Waban",
+        "id": "place-waban",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Woodland",
+        "id": "place-woodl",
+        "destination_0": "Riverside",
+        "destination_1": "Union Square"
+      },
+      {
+        "name": "Riverside",
+        "id": "place-river",
+        "destination_0": "",
+        "destination_1": "Union Square"
+      }
+    ],
+    "Green-C": [
+      {
+        "name": "Government Center",
+        "id": "place-gover",
+        "destination_0": "Cleveland Circle",
+        "destination_1": ""
+      },
+      {
+        "name": "Park Street",
+        "id": "place-pktrm",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Boylston",
+        "id": "place-boyls",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Arlington",
+        "id": "place-armnl",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Copley",
+        "id": "place-coecl",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Hynes Convention Center",
+        "id": "place-hymnl",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Kenmore",
+        "id": "place-kencl",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Saint Mary's Street",
+        "id": "place-smary",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Hawes Street",
+        "id": "place-hwsst",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Kent Street",
+        "id": "place-kntst",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Saint Paul Street",
+        "id": "place-stpul",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Coolidge Corner",
+        "id": "place-cool",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Summit Avenue",
+        "id": "place-sumav",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Brandon Hall",
+        "id": "place-bndhl",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Fairbanks Street",
+        "id": "place-fbkst",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Washington Square",
+        "id": "place-bcnwa",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Tappan Street",
+        "id": "place-tapst",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Dean Road",
+        "id": "place-denrd",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Englewood Avenue",
+        "id": "place-engav",
+        "destination_0": "Cleveland Circle",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Cleveland Circle",
+        "id": "place-clmnl",
+        "destination_0": "",
+        "destination_1": "Government Center"
+      }
+    ],
+    "Green-B": [
+      {
+        "name": "Government Center",
+        "id": "place-gover",
+        "destination_0": "Boston College",
+        "destination_1": ""
+      },
+      {
+        "name": "Park Street",
+        "id": "place-pktrm",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Boylston",
+        "id": "place-boyls",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Arlington",
+        "id": "place-armnl",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Copley",
+        "id": "place-coecl",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Hynes Convention Center",
+        "id": "place-hymnl",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Kenmore",
+        "id": "place-kencl",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Blandford Street",
+        "id": "place-bland",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Boston University East",
+        "id": "place-buest",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Boston University Central",
+        "id": "place-bucen",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Amory Street",
+        "id": "place-amory",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Babcock Street",
+        "id": "place-babck",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Packard's Corner",
+        "id": "place-brico",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Harvard Avenue",
+        "id": "place-harvd",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Griggs Street",
+        "id": "place-grigg",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Allston Street",
+        "id": "place-alsgr",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Warren Street",
+        "id": "place-wrnst",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Washington Street",
+        "id": "place-wascm",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Sutherland Road",
+        "id": "place-sthld",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Chiswick Road",
+        "id": "place-chswk",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Chestnut Hill Avenue",
+        "id": "place-chill",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "South Street",
+        "id": "place-sougr",
+        "destination_0": "Boston College",
+        "destination_1": "Government Center"
+      },
+      {
+        "name": "Boston College",
+        "id": "place-lake",
+        "destination_0": "",
+        "destination_1": "Government Center"
+      }
+    ]
+  },
+  "commuter": [
     {
       "name": "Back Bay",
-      "id": "place-bbsta",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Massachusetts Avenue",
-      "id": "place-masta",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
+      "id": "place-bbsta"
     },
     {
       "name": "Ruggles",
-      "id": "place-rugg",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Roxbury Crossing",
-      "id": "place-rcmnl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Jackson Square",
-      "id": "place-jaksn",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Stony Brook",
-      "id": "place-sbmnl",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
-    },
-    {
-      "name": "Green Street",
-      "id": "place-grnst",
-      "destination_0": "Forest Hills",
-      "destination_1": "Oak Grove"
+      "id": "place-rugg"
     },
     {
       "name": "Forest Hills",
-      "id": "place-forhl",
-      "destination_0": "",
-      "destination_1": "Oak Grove"
-    }
-  ],
-  "Blue": [
+      "id": "place-forhl"
+    },
+    {
+      "name": "Hyde Park",
+      "id": "place-NEC-2203"
+    },
+    {
+      "name": "Route 128",
+      "id": "place-NEC-2173"
+    },
+    {
+      "name": "Canton Junction",
+      "id": "place-NEC-2139"
+    },
+    {
+      "name": "Canton Center",
+      "id": "place-SB-0156"
+    },
+    {
+      "name": "Stoughton",
+      "id": "place-SB-0189"
+    },
+    {
+      "name": "Sharon",
+      "id": "place-NEC-2108"
+    },
+    {
+      "name": "Mansfield",
+      "id": "place-NEC-2040"
+    },
+    {
+      "name": "Attleboro",
+      "id": "place-NEC-1969"
+    },
+    {
+      "name": "South Attleboro",
+      "id": "place-NEC-1969"
+    },
+    {
+      "name": "Pawtucket/Central Falls",
+      "id": "place-NEC-1891"
+    },
+    {
+      "name": "Providence",
+      "id": "place-NEC-1851"
+    },
+    {
+      "name": "TF Green Airport",
+      "id": "place-NEC-1768"
+    },
+    {
+      "name": "Wickford Junction",
+      "id": "place-NEC-1659"
+    },
+    {
+      "name": "Readville",
+      "id": "place-DB-0095"
+    },
+    {
+      "name": "Endicott",
+      "id": "place-FB-0109"
+    },
+    {
+      "name": "Dedham Corporate Center",
+      "id": "place-FB-0118"
+    },
+    {
+      "name": "Islington",
+      "id": "place-FB-0125"
+    },
     {
-      "name": "Wonderland",
-      "id": "place-wondl",
-      "destination_0": "Bowdoin",
-      "destination_1": ""
+      "name": "Norwood Depot",
+      "id": "place-FB-0143"
     },
     {
-      "name": "Revere Beach",
-      "id": "place-rbmnl",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Norwood Central",
+      "id": "place-FB-0148"
     },
     {
-      "name": "Beachmont",
-      "id": "place-bmmnl",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Windsor Gardens",
+      "id": "place-FB-0166"
     },
     {
-      "name": "Suffolk Downs",
-      "id": "place-sdmnl",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Walpole",
+      "id": "place-FB-0191"
     },
     {
-      "name": "Orient Heights",
-      "id": "place-orhte",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Foxboro",
+      "id": "place-FS-0049"
     },
     {
-      "name": "Wood Island",
-      "id": "place-wimnl",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Norfolk",
+      "id": "place-FB-0230"
     },
     {
-      "name": "Airport",
-      "id": "place-aport",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Franklin",
+      "id": "place-FB-0275"
     },
     {
-      "name": "Maverick",
-      "id": "place-mvbcl",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Forge Park/495",
+      "id": "place-FB-0303"
     },
     {
-      "name": "Aquarium",
-      "id": "place-aqucl",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Roslindale Village",
+      "id": "place-NB-0064"
     },
     {
-      "name": "State",
-      "id": "place-state",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Bellevue",
+      "id": "place-NB-0072"
     },
     {
-      "name": "Government Center",
-      "id": "place-gover",
-      "destination_0": "Bowdoin",
-      "destination_1": "Wonderland"
+      "name": "Highland",
+      "id": "place-NB-0076"
     },
     {
-      "name": "Bowdoin",
-      "id": "place-bomnl",
-      "destination_0": "",
-      "destination_1": "Wonderland"
-    }
-  ],
-  "Green-E": [
+      "name": "Roxbury",
+      "id": "place-NB-0080"
+    },
+    {
+      "name": "Hersey",
+      "id": "place-NB-0109"
+    },
+    {
+      "name": "Needham Junction",
+      "id": "place-NB-0120"
+    },
+    {
+      "name": "Needham Center",
+      "id": "place-NB-0127"
+    },
+    {
+      "name": "Needham Heights",
+      "id": "place-NB-0137"
+    },
+    {
+      "name": "Lansdowne",
+      "id": "place-WML-0025"
+    },
+    {
+      "name": "Boston Landing",
+      "id": "place-WML-0035"
+    },
+    {
+      "name": "Newtonville",
+      "id": "place-WML-0081"
+    },
+    {
+      "name": "West Newton",
+      "id": "place-WML-0091"
+    },
+    {
+      "name": "Auburndale",
+      "id": "place-WML-0102"
+    },
+    {
+      "name": "Wellesley Farms",
+      "id": "place-WML-0125"
+    },
+    {
+      "name": "Wellesley Hills",
+      "id": "place-WML-0135"
+    },
+    {
+      "name": "Wellesley Square",
+      "id": "place-WML-0147"
+    },
+    {
+      "name": "Natick Center",
+      "id": "place-WML-0177"
+    },
     {
-      "name": "Medford/Tufts",
-      "id": "place-mdftf",
-      "destination_0": "Heath Street",
-      "destination_1": ""
+      "name": "West Natick",
+      "id": "place-WML-0199"
     },
     {
-      "name": "Ball Square",
-      "id": "place-balsq",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Framingham",
+      "id": "place-WML-0214"
     },
     {
-      "name": "Magoun Square",
-      "id": "place-mgngl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Ashland",
+      "id": "place-WML-0252"
     },
     {
-      "name": "Gilman Square",
-      "id": "place-gilmn",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Southborough",
+      "id": "place-WML-0274"
     },
     {
-      "name": "East Somerville",
-      "id": "place-esomr",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Westborough",
+      "id": "place-WML-0340"
     },
     {
-      "name": "Lechmere",
-      "id": "place-lech",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Grafton",
+      "id": "place-WML-0364"
     },
     {
-      "name": "Science Park/West End",
-      "id": "place-spmnl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Worcester",
+      "id": "place-WML-0442"
     },
     {
-      "name": "North Station",
-      "id": "place-north",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Newmarket",
+      "id": "place-DB-2265"
     },
     {
-      "name": "Haymarket",
-      "id": "place-haecl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Uphams Corner",
+      "id": "place-DB-2258"
     },
     {
-      "name": "Government Center",
-      "id": "place-gover",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Four Corners/Geneva",
+      "id": "place-DB-2249"
     },
     {
-      "name": "Park Street",
-      "id": "place-pktrm",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Talbot Avenue",
+      "id": "place-DB-2240"
     },
     {
-      "name": "Boylston",
-      "id": "place-boyls",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Morton Street",
+      "id": "place-DB-2230"
     },
     {
-      "name": "Arlington",
-      "id": "place-armnl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Blue Hill Avenue",
+      "id": "place-DB-2222"
     },
     {
-      "name": "Copley",
-      "id": "place-coecl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Fairmount",
+      "id": "place-DB-2205"
     },
     {
-      "name": "Prudential",
-      "id": "place-prmnl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "JFK/UMass",
+      "id": "place-jfk"
     },
     {
-      "name": "Symphony",
-      "id": "place-symcl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Quincy Center",
+      "id": "place-qnctr"
     },
     {
-      "name": "Northeastern",
-      "id": "place-nuniv",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Braintree",
+      "id": "place-brntn"
     },
     {
-      "name": "Museum of Fine Arts",
-      "id": "place-mfa",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Weymouth Landing/East Braintree",
+      "id": "place-GRB-0118"
     },
     {
-      "name": "Longwood Medical Area",
-      "id": "place-lngmd",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "East Weymouth",
+      "id": "place-GRB-0146"
     },
     {
-      "name": "Brigham Circle",
-      "id": "place-brmnl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "West Hingham",
+      "id": "place-GRB-0162"
     },
     {
-      "name": "Fenwood Road",
-      "id": "place-fenwd",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Nantasket Junction",
+      "id": "place-GRB-0183"
     },
     {
-      "name": "Mission Park",
-      "id": "place-mispk",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Cohasset",
+      "id": "place-GRB-0199"
     },
     {
-      "name": "Riverway",
-      "id": "place-rvrwy",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "North Scituate",
+      "id": "place-GRB-0233"
     },
     {
-      "name": "Back of the Hill",
-      "id": "place-bckhl",
-      "destination_0": "Heath Street",
-      "destination_1": "Medford/Tufts"
+      "name": "Greenbush",
+      "id": "place-GRB-0276"
     },
     {
-      "name": "Heath Street",
-      "id": "place-hsmnl",
-      "destination_0": "",
-      "destination_1": "Medford/Tufts"
-    }
-  ],
-  "Green-D": [
+      "name": "South Weymouth",
+      "id": "place-PB-0158"
+    },
+    {
+      "name": "Abington",
+      "id": "place-PB-0194"
+    },
+    {
+      "name": "Whitman",
+      "id": "place-PB-0212"
+    },
+    {
+      "name": "Hanson",
+      "id": "place-PB-0245"
+    },
     {
-      "name": "Union Square",
-      "id": "place-unsqu",
-      "destination_0": "Riverside",
-      "destination_1": ""
+      "name": "Halifax",
+      "id": "place-PB-0281"
     },
     {
-      "name": "Lechmere",
-      "id": "place-lech",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Kingston",
+      "id": "place-KB-0351"
     },
     {
-      "name": "Science Park/West End",
-      "id": "place-spmnl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Holbrook/Randolph",
+      "id": "place-MM-0150"
     },
     {
-      "name": "North Station",
-      "id": "place-north",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Montello",
+      "id": "place-MM-0186"
     },
     {
-      "name": "Haymarket",
-      "id": "place-haecl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Brockton",
+      "id": "place-MM-0200"
     },
     {
-      "name": "Government Center",
-      "id": "place-gover",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Campello",
+      "id": "place-MM-0219"
     },
     {
-      "name": "Park Street",
-      "id": "place-pktrm",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Bridgewater",
+      "id": "place-MM-0277"
     },
     {
-      "name": "Boylston",
-      "id": "place-boyls",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Middleborough",
+      "id": "place-MBS-0350"
     },
     {
-      "name": "Arlington",
-      "id": "place-armnl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "East Taunton",
+      "id": "place-NBM-0374"
     },
     {
-      "name": "Copley",
-      "id": "place-coecl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Freetown",
+      "id": "place-FRS-0054"
     },
     {
-      "name": "Hynes Convention Center",
-      "id": "place-hymnl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Fall River Depot",
+      "id": "place-FRS-0109"
     },
     {
-      "name": "Kenmore",
-      "id": "place-kencl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Church Street",
+      "id": "place-NBM-0523"
     },
     {
-      "name": "Fenway",
-      "id": "place-fenwy",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "New Bedford",
+      "id": "place-NBM-0546"
     },
     {
-      "name": "Longwood",
-      "id": "place-longw",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Chelsea",
+      "id": "place-chels"
     },
     {
-      "name": "Brookline Village",
-      "id": "place-bvmnl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "River Works",
+      "id": "place-ER-0099"
     },
     {
-      "name": "Brookline Hills",
-      "id": "place-brkhl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Lynn",
+      "id": "place-ER-0117"
     },
     {
-      "name": "Beaconfield",
-      "id": "place-bcnfd",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Swampscott",
+      "id": "place-ER-0128"
     },
     {
-      "name": "Reservoir",
-      "id": "place-rsmnl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Salem",
+      "id": "place-ER-0168"
     },
     {
-      "name": "Chestnut Hill",
-      "id": "place-chhil",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Beverly",
+      "id": "place-ER-0183"
     },
     {
-      "name": "Newton Centre",
-      "id": "place-newto",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "North Beverly",
+      "id": "place-ER-0208"
     },
     {
-      "name": "Newton Highlands",
-      "id": "place-newtn",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Hamilton/Wenham",
+      "id": "place-ER-0227"
     },
     {
-      "name": "Eliot",
-      "id": "place-eliot",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Ipswich",
+      "id": "place-ER-0276"
     },
     {
-      "name": "Waban",
-      "id": "place-waban",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Rowley",
+      "id": "place-ER-0312"
     },
     {
-      "name": "Woodland",
-      "id": "place-woodl",
-      "destination_0": "Riverside",
-      "destination_1": "Union Square"
+      "name": "Newburyport",
+      "id": "place-ER-0362"
     },
     {
-      "name": "Riverside",
-      "id": "place-river",
-      "destination_0": "",
-      "destination_1": "Union Square"
-    }
-  ],
-  "Green-C": [
+      "name": "Montserrat",
+      "id": "place-GB-0198"
+    },
     {
-      "name": "Government Center",
-      "id": "place-gover",
-      "destination_0": "Cleveland Circle",
-      "destination_1": ""
+      "name": "Beverly Farms",
+      "id": "place-GB-0229"
     },
     {
-      "name": "Park Street",
-      "id": "place-pktrm",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Manchester",
+      "id": "place-GB-0254"
     },
     {
-      "name": "Boylston",
-      "id": "place-boyls",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Gloucester",
+      "id": "place-GB-0296"
     },
     {
-      "name": "Arlington",
-      "id": "place-armnl",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Gloucester",
+      "id": "place-GB-0316"
     },
     {
-      "name": "Copley",
-      "id": "place-coecl",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Rockport",
+      "id": "place-GB-0353"
     },
     {
-      "name": "Hynes Convention Center",
-      "id": "place-hymnl",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Malden Center",
+      "id": "place-mlmnl"
     },
     {
-      "name": "Kenmore",
-      "id": "place-kencl",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Oak Grove",
+      "id": "place-ogmnl"
     },
     {
-      "name": "Saint Mary's Street",
-      "id": "place-smary",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Wyoming Hill",
+      "id": "place-WR-0062"
     },
     {
-      "name": "Hawes Street",
-      "id": "place-hwsst",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Melrose/Cedar Park",
+      "id": "place-WR-0067"
     },
     {
-      "name": "Kent Street",
-      "id": "place-kntst",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Melrose Highlands",
+      "id": "place-WR-0075"
     },
     {
-      "name": "Saint Paul Street",
-      "id": "place-stpul",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Greenwood",
+      "id": "place-WR-0085"
     },
     {
-      "name": "Coolidge Corner",
-      "id": "place-cool",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Wakefield",
+      "id": "place-WR-0099"
     },
     {
-      "name": "Summit Avenue",
-      "id": "place-sumav",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Reading",
+      "id": "place-WR-0120"
     },
     {
-      "name": "Brandon Hall",
-      "id": "place-bndhl",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "North Wilmington",
+      "id": "place-WR-0163"
     },
     {
-      "name": "Fairbanks Street",
-      "id": "place-fbkst",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Ballardvale",
+      "id": "place-WR-0205"
     },
     {
-      "name": "Washington Square",
-      "id": "place-bcnwa",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Andover",
+      "id": "place-WR-0228"
     },
     {
-      "name": "Tappan Street",
-      "id": "place-tapst",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Lawrence",
+      "id": "place-WR-0264"
     },
     {
-      "name": "Dean Road",
-      "id": "place-denrd",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Bradford",
+      "id": "place-WR-0325"
     },
     {
-      "name": "Englewood Avenue",
-      "id": "place-engav",
-      "destination_0": "Cleveland Circle",
-      "destination_1": "Government Center"
+      "name": "Haverhill",
+      "id": "place-WR-0329"
     },
     {
-      "name": "Cleveland Circle",
-      "id": "place-clmnl",
-      "destination_0": "",
-      "destination_1": "Government Center"
-    }
-  ],
-  "Green-B": [
+      "name": "Medford",
+      "id": "place-NHRML-0055"
+    },
     {
-      "name": "Government Center",
-      "id": "place-gover",
-      "destination_0": "Boston College",
-      "destination_1": ""
+      "name": "Wedgemere",
+      "id": "place-NHRML-0073"
     },
     {
-      "name": "Park Street",
-      "id": "place-pktrm",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Winchester Center",
+      "id": "place-NHRML-0078"
     },
     {
-      "name": "Boylston",
-      "id": "place-boyls",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Anderson/Woburn",
+      "id": "place-NHRML-0127"
     },
     {
-      "name": "Arlington",
-      "id": "place-armnl",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Wilmington",
+      "id": "place-NHRML-0152"
     },
     {
-      "name": "Copley",
-      "id": "place-coecl",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "North Billerica",
+      "id": "place-NHRML-0218"
     },
     {
-      "name": "Hynes Convention Center",
-      "id": "place-hymnl",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Lowell",
+      "id": "place-NHRML-0254"
     },
     {
-      "name": "Kenmore",
-      "id": "place-kencl",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Porter",
+      "id": "place-portr"
     },
     {
-      "name": "Blandford Street",
-      "id": "place-bland",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Belmont",
+      "id": "place-FR-0064"
     },
     {
-      "name": "Boston University East",
-      "id": "place-buest",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Waverly",
+      "id": "place-FR-0074"
     },
     {
-      "name": "Boston University Central",
-      "id": "place-bucen",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Waltham",
+      "id": "place-FR-0098"
     },
     {
-      "name": "Amory Street",
-      "id": "place-amory",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Brandeis/Roberts",
+      "id": "place-FR-0115"
     },
     {
-      "name": "Babcock Street",
-      "id": "place-babck",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Kendal Green",
+      "id": "place-FR-0132"
     },
     {
-      "name": "Packard's Corner",
-      "id": "place-brico",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Silver Hill",
+      "id": "place-FR-0147"
     },
     {
-      "name": "Harvard Avenue",
-      "id": "place-harvd",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Lincoln",
+      "id": "place-FR-0167"
     },
     {
-      "name": "Griggs Street",
-      "id": "place-grigg",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Concord",
+      "id": "place-FR-0201"
     },
     {
-      "name": "Allston Street",
-      "id": "place-alsgr",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Concord",
+      "id": "place-FR-0219"
     },
     {
-      "name": "Warren Street",
-      "id": "place-wrnst",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "South Acton",
+      "id": "place-FR-0253"
     },
     {
-      "name": "Washington Street",
-      "id": "place-wascm",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Littleton/Route 495",
+      "id": "place-FR-0301"
     },
     {
-      "name": "Sutherland Road",
-      "id": "place-sthld",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Ayer",
+      "id": "place-FR-0361"
     },
     {
-      "name": "Chiswick Road",
-      "id": "place-chswk",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Shirley",
+      "id": "place-FR-0394"
     },
     {
-      "name": "Chestnut Hill Avenue",
-      "id": "place-chill",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "North Leominster",
+      "id": "place-FR-0451"
     },
     {
-      "name": "South Street",
-      "id": "place-sougr",
-      "destination_0": "Boston College",
-      "destination_1": "Government Center"
+      "name": "Fitchburg",
+      "id": "place-FR-0494"
     },
     {
-      "name": "Boston College",
-      "id": "place-lake",
-      "destination_0": "",
-      "destination_1": "Government Center"
+      "name": "Watchusett",
+      "id": "place-FR-3338"
     }
   ]
-},
-"commuter": [
-  {
-    "name": "Back Bay",
-    "id": "place-bbsta"
-  },
-  {
-    "name": "Ruggles",
-    "id": "place-rugg"
-  },
-  {
-    "name": "Forest Hills",
-    "id": "place-forhl"
-  },
-  {
-    "name": "Hyde Park",
-    "id": "place-NEC-2203"
-  },
-  {
-    "name": "Route 128",
-    "id": "place-NEC-2173"
-  },
-  {
-    "name": "Canton Junction",
-    "id": "place-NEC-2139"
-  },
-  {
-    "name": "Canton Center",
-    "id": "place-SB-0156"
-  },
-  {
-    "name": "Stoughton",
-    "id": "place-SB-0189"
-  },
-  {
-    "name": "Sharon",
-    "id": "place-NEC-2108"
-  },
-  {
-    "name": "Mansfield",
-    "id": "place-NEC-2040"
-  },
-  {
-    "name": "Attleboro",
-    "id": "place-NEC-1969"
-  },
-  {
-    "name": "South Attleboro",
-    "id": "place-NEC-1969"
-  },
-  {
-    "name": "Pawtucket/Central Falls",
-    "id": "place-NEC-1891"
-  },
-  {
-    "name": "Providence",
-    "id": "place-NEC-1851"
-  },
-  {
-    "name": "TF Green Airport",
-    "id": "place-NEC-1768"
-  },
-  {
-    "name": "Wickford Junction",
-    "id": "place-NEC-1659"
-  },
-  {
-    "name": "Readville",
-    "id": "place-DB-0095"
-  },
-  {
-    "name": "Endicott",
-    "id": "place-FB-0109"
-  },
-  {
-    "name": "Dedham Corporate Center",
-    "id": "place-FB-0118"
-  },
-  {
-    "name": "Islington",
-    "id": "place-FB-0125"
-  },
-  {
-    "name": "Norwood Depot",
-    "id": "place-FB-0143"
-  },
-  {
-    "name": "Norwood Central",
-    "id": "place-FB-0148"
-  },
-  {
-    "name": "Windsor Gardens",
-    "id": "place-FB-0166"
-  },
-  {
-    "name": "Walpole",
-    "id": "place-FB-0191"
-  },
-  {
-    "name": "Foxboro",
-    "id": "place-FS-0049"
-  },
-  {
-    "name": "Norfolk",
-    "id": "place-FB-0230"
-  },
-  {
-    "name": "Franklin",
-    "id": "place-FB-0275"
-  },
-  {
-    "name": "Forge Park/495",
-    "id": "place-FB-0303"
-  },
-  {
-    "name": "Roslindale Village",
-    "id": "place-NB-0064"
-  },
-  {
-    "name": "Bellevue",
-    "id": "place-NB-0072"
-  },
-  {
-    "name": "Highland",
-    "id": "place-NB-0076"
-  },
-  {
-    "name": "Roxbury",
-    "id": "place-NB-0080"
-  },
-  {
-    "name": "Hersey",
-    "id": "place-NB-0109"
-  },
-  {
-    "name": "Needham Junction",
-    "id": "place-NB-0120"
-  },
-  {
-    "name": "Needham Center",
-    "id": "place-NB-0127"
-  },
-  {
-    "name": "Needham Heights",
-    "id": "place-NB-0137"
-  },
-  {
-    "name": "Lansdowne",
-    "id": "place-WML-0025"
-  },
-  {
-    "name": "Boston Landing",
-    "id": "place-WML-0035"
-  },
-  {
-    "name": "Newtonville",
-    "id": "place-WML-0081"
-  },
-  {
-    "name": "West Newton",
-    "id": "place-WML-0091"
-  },
-  {
-    "name": "Auburndale",
-    "id": "place-WML-0102"
-  },
-  {
-    "name": "Wellesley Farms",
-    "id": "place-WML-0125"
-  },
-  {
-    "name": "Wellesley Hills",
-    "id": "place-WML-0135"
-  },
-  {
-    "name": "Wellesley Square",
-    "id": "place-WML-0147"
-  },
-  {
-    "name": "Natick Center",
-    "id": "place-WML-0177"
-  },
-  {
-    "name": "West Natick",
-    "id": "place-WML-0199"
-  },
-  {
-    "name": "Framingham",
-    "id": "place-WML-0214"
-  },
-  {
-    "name": "Ashland",
-    "id": "place-WML-0252"
-  },
-  {
-    "name": "Southborough",
-    "id": "place-WML-0274"
-  },
-  {
-    "name": "Westborough",
-    "id": "place-WML-0340"
-  },
-  {
-    "name": "Grafton",
-    "id": "place-WML-0364"
-  },
-  {
-    "name": "Worcester",
-    "id": "place-WML-0442"
-  },
-  {
-    "name": "Newmarket",
-    "id": "place-DB-2265"
-  },
-  {
-    "name": "Uphams Corner",
-    "id": "place-DB-2258"
-  },
-  {
-    "name": "Four Corners/Geneva",
-    "id": "place-DB-2249"
-  },
-  {
-    "name": "Talbot Avenue",
-    "id": "place-DB-2240"
-  },
-  {
-    "name": "Morton Street",
-    "id": "place-DB-2230"
-  },
-  {
-    "name": "Blue Hill Avenue",
-    "id": "place-DB-2222"
-  },
-  {
-    "name": "Fairmount",
-    "id": "place-DB-2205"
-  },
-  {
-    "name": "JFK/UMass",
-    "id": "place-jfk"
-  },
-  {
-    "name": "Quincy Center",
-    "id": "place-qnctr"
-  },
-  {
-    "name": "Braintree",
-    "id": "place-brntn"
-  },
-  {
-    "name": "Weymouth Landing/East Braintree",
-    "id": "place-GRB-0118"
-  },
-  {
-    "name": "East Weymouth",
-    "id": "place-GRB-0146"
-  },
-  {
-    "name": "West Hingham",
-    "id": "place-GRB-0162"
-  },
-  {
-    "name": "Nantasket Junction",
-    "id": "place-GRB-0183"
-  },
-  {
-    "name": "Cohasset",
-    "id": "place-GRB-0199"
-  },
-  {
-    "name": "North Scituate",
-    "id": "place-GRB-0233"
-  },
-  {
-    "name": "Greenbush",
-    "id": "place-GRB-0276"
-  },
-  {
-    "name": "South Weymouth",
-    "id": "place-PB-0158"
-  },
-  {
-    "name": "Abington",
-    "id": "place-PB-0194"
-  },
-  {
-    "name": "Whitman",
-    "id": "place-PB-0212"
-  },
-  {
-    "name": "Hanson",
-    "id": "place-PB-0245"
-  },
-  {
-    "name": "Halifax",
-    "id": "place-PB-0281"
-  },
-  {
-    "name": "Kingston",
-    "id": "place-KB-0351"
-  },
-  {
-    "name": "Holbrook/Randolph",
-    "id": "place-MM-0150"
-  },
-  {
-    "name": "Montello",
-    "id": "place-MM-0186"
-  },
-  {
-    "name": "Brockton",
-    "id": "place-MM-0200"
-  },
-  {
-    "name": "Campello",
-    "id": "place-MM-0219"
-  },
-  {
-    "name": "Bridgewater",
-    "id": "place-MM-0277"
-  },
-  {
-    "name": "Middleborough/Lakeville",
-    "id": "place-MM-0356"
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  {
-    "name": "Chelsea",
-    "id": "place-chels"
-  },
-  {
-    "name": "River Works",
-    "id": "place-ER-0099"
-  },
-  {
-    "name": "Lynn",
-    "id": "place-ER-0117"
-  },
-  {
-    "name": "Swampscott",
-    "id": "place-ER-0128"
-  },
-  {
-    "name": "Salem",
-    "id": "place-ER-0168"
-  },
-  {
-    "name": "Beverly",
-    "id": "place-ER-0183"
-  },
-  {
-    "name": "North Beverly",
-    "id": "place-ER-0208"
-  },
-  {
-    "name": "Hamilton/Wenham",
-    "id": "place-ER-0227"
-  },
-  {
-    "name": "Ipswich",
-    "id": "place-ER-0276"
-  },
-  {
-    "name": "Rowley",
-    "id": "place-ER-0312"
-  },
-  {
-    "name": "Newburyport",
-    "id": "place-ER-0362"
-  },
-  {
-    "name": "Montserrat",
-    "id": "place-GB-0198"
-  },
-  {
-    "name": "Beverly Farms",
-    "id": "place-GB-0229"
-  },
-  {
-    "name": "Manchester",
-    "id": "place-GB-0254"
-  },
-  {
-    "name": "Gloucester",
-    "id": "place-GB-0296"
-  },
-  {
-    "name": "Gloucester",
-    "id": "place-GB-0316"
-  },
-  {
-    "name": "Rockport",
-    "id": "place-GB-0353"
-  },
-  {
-    "name": "Malden Center",
-    "id": "place-mlmnl"
-  },
-  {
-    "name": "Oak Grove",
-    "id": "place-ogmnl"
-  },
-  {
-    "name": "Wyoming Hill",
-    "id": "place-WR-0062"
-  },
-  {
-    "name": "Melrose/Cedar Park",
-    "id": "place-WR-0067"
-  },
-  {
-    "name": "Melrose Highlands",
-    "id": "place-WR-0075"
-  },
-  {
-    "name": "Greenwood",
-    "id": "place-WR-0085"
-  },
-  {
-    "name": "Wakefield",
-    "id": "place-WR-0099"
-  },
-  {
-    "name": "Reading",
-    "id": "place-WR-0120"
-  },
-  {
-    "name": "North Wilmington",
-    "id": "place-WR-0163"
-  },
-  {
-    "name": "Ballardvale",
-    "id": "place-WR-0205"
-  },
-  {
-    "name": "Andover",
-    "id": "place-WR-0228"
-  },
-  {
-    "name": "Lawrence",
-    "id": "place-WR-0264"
-  },
-  {
-    "name": "Bradford",
-    "id": "place-WR-0325"
-  },
-  {
-    "name": "Haverhill",
-    "id": "place-WR-0329"
-  },
-  {
-    "name": "Medford",
-    "id": "place-NHRML-0055"
-  },
-  {
-    "name": "Wedgemere",
-    "id": "place-NHRML-0073"
-  },
-  {
-    "name": "Winchester Center",
-    "id": "place-NHRML-0078"
-  },
-  {
-    "name": "Anderson/Woburn",
-    "id": "place-NHRML-0127"
-  },
-  {
-    "name": "Wilmington",
-    "id": "place-NHRML-0152"
-  },
-  {
-    "name": "North Billerica",
-    "id": "place-NHRML-0218"
-  },
-  {
-    "name": "Lowell",
-    "id": "place-NHRML-0254"
-  },
-  {
-    "name": "Porter",
-    "id": "place-portr"
-  },
-  {
-    "name": "Belmont",
-    "id": "place-FR-0064"
-  },
-  {
-    "name": "Waverly",
-    "id": "place-FR-0074"
-  },
-  {
-    "name": "Waltham",
-    "id": "place-FR-0098"
-  },
-  {
-    "name": "Brandeis/Roberts",
-    "id": "place-FR-0115"
-  },
-  {
-    "name": "Kendal Green",
-    "id": "place-FR-0132"
-  },
-  {
-    "name": "Silver Hill",
-    "id": "place-FR-0147"
-  },
-  {
-    "name": "Lincoln",
-    "id": "place-FR-0167"
-  },
-  {
-    "name": "Concord",
-    "id": "place-FR-0201"
-  },
-  {
-    "name": "Concord",
-    "id": "place-FR-0219"
-  },
-  {
-    "name": "South Acton",
-    "id": "place-FR-0253"
-  },
-  {
-    "name": "Littleton/Route 495",
-    "id": "place-FR-0301"
-  },
-  {
-    "name": "Ayer",
-    "id": "place-FR-0361"
-  },
-  {
-    "name": "Shirley",
-    "id": "place-FR-0394"
-  },
-  {
-    "name": "North Leominster",
-    "id": "place-FR-0451"
-  },
-  {
-    "name": "Fitchburg",
-    "id": "place-FR-0494"
-  },
-  {
-    "name": "Watchusett",
-    "id": "place-FR-3338"
-  }
-]}
+}

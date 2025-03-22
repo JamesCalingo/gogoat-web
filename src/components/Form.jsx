@@ -133,11 +133,10 @@ function Form(props) {
         { id: "CR-Needham", line: "Needham" },
         { id: "CR-Franklin", line: "Franklin/Foxboro" },
         { id: "CR-Providence", line: "Providence/Stoughton" },
-        { id: "CR-Middleborough", line: "Middleborough/Lakeville" },
         { id: "CR-Kingston", line: "Kingston" },
         { id: "CR-Greenbush", line: "Greenbush" },
         { id: "CR-Fairmount", line: "Fairmount" },
-        // {id:"CR-NewBedford", line: "Fall River/New Bedford"}, COMING SOON
+        {id:"CR-NewBedford", line: "Fall River/New Bedford"},
       ],
       backbay: [
         { id: "CR-Worcester", line: "Worcester" },
