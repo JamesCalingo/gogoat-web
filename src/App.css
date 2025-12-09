@@ -5,6 +5,8 @@
   text-align: center;
 }
 
+
+
 .selected {
   background: rgb(14, 99, 170);
   border-width: 2px;
@@ -13,6 +15,7 @@
 
 .sign-top {
   margin-bottom: 0;
+  padding-top: 0;
   border: 1px solid black;
 }
 

@@ -16,7 +16,8 @@ function Prediction(props) {
     } = props
 
     return (
-      <div>
+      <>
+        <div>
         {prediction.attributes.error ? (
           <>
           <h2>{prediction.attributes.error}</h2>
@@ -45,10 +46,11 @@ function Prediction(props) {
               {alert && <><h2 className="prediction_section_header">ALERT:</h2><span>{alert}</span></>}
           </div>
         )}
+        </div>
         <button onClick={() => reset()}>Find another train</button>
 
       {!prediction.attributes.error ?  <button onClick={() => save()}>Save as Favorite</button> : null}
-      </div>
+      </>
     );
   }
 

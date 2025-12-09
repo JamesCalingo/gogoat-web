@@ -55,10 +55,19 @@ function Favorites(props) {
       <h2>
         <em>Previously saved trip:</em>
       </h2>
-
-      <h2>
-        {data ? data.origin : ""} &#8594; {data.destination}:<br />
-        <span className="time">
+      <div className="saved">
+      <h2
+        className={
+          data.mode === "subway"
+            ? !data.line.includes("Green")
+              ? `${data.line} sign-top`
+              : "Green sign-top"
+            : "commuter sign-top"
+        }
+      >
+        {data ? data.origin : ""} &#8594; {data.destination}<br />
+          </h2>
+        <h3 className="time sign-bottom">
           {prediction
             ? prediction.attributes
               ? formatTime(
@@ -68,8 +77,8 @@ function Favorites(props) {
                 )
               : "N/A"
             : "..."}
-        </span>
-      </h2>
+        </h3>
+        </div>
       {!!alert && (
         <>
           <h3>ALERT:</h3>
