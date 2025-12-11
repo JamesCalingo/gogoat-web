@@ -51,7 +51,7 @@ function Favorites(props) {
   }
 
   return (
-    <>
+    <div className="fixed-width">
       <h2>
         <em>Previously saved trip:</em>
       </h2>
@@ -86,7 +86,7 @@ function Favorites(props) {
         </>
       )}
       <button onClick={handlePressClear}>Clear</button>
-    </>
+    </div>
   );
 }
 

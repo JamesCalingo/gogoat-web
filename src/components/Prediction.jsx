@@ -25,11 +25,11 @@ function Prediction(props) {
 
           </>
         ) : (
-          <div>
+          <div className="fixed-width">
             <h2 className={mode === "subway" ? !line.includes("Green") ? `${line} sign-top` : "Green sign-top" : "commuter sign-top"} >{station.name}</h2>
             <h3 className="sign-bottom">{!!(mode === "subway" || direction) && "TO"} {displayDirection(station, direction, displayLineName(line), pattern)}</h3>
             <h2>
-              It looks like your train should be sometime around
+              It looks like your train should arrive sometime around
               <br />
               <span className="time">
                 {formatTime(

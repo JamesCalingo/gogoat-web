@@ -5,7 +5,9 @@
   text-align: center;
 }
 
-
+.fixed-width {
+  max-width: 500px;
+}
 
 .selected {
   background: rgb(14, 99, 170);
